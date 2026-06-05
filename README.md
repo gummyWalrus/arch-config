@@ -32,3 +32,13 @@ I have centralized every config file here, even the ones located outside of the 
 * pass
 * gnupg
 * pinentry (optional but will prevent you from retyping your GPG passkey everytime you search password, the GTK one fits the theme, not the other variants)
+
+## Setup
+
+Clone the repository in your .config folder.
+
+```bash
+git clone git@github.com:gummyWalrus/LanicOS.git ~/.config
+```
+
+Execute the `links.sh` to create necessary symlinks
