@@ -1,0 +1,15 @@
+# My Apps
+VSCodium/
+GIMP/
+mozilla/
+go/
+
+# System apps (not really but almost)
+dconf/
+pulse/
+trashrc
+
+
+# GUI backend config
+nwg-look/
+QtProject.conf
