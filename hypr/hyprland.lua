@@ -31,7 +31,7 @@ hl.monitor({
 local terminal    = "kitty"
 local fileManager = "nautilus"
 local menu        = "wofi"
-local browser	  = "app.zen_browser.zen"
+-- local browser	  = "app.zen_browser.zen"
 
 -------------------
 ---- AUTOSTART ----
@@ -46,7 +46,8 @@ hl.on("hyprland.start", function ()
 hl.exec_cmd(terminal)
 -- hl.exec_cmd("nm-applet")
 hl.exec_cmd("waybar")
-hl.exec_once("hyprpaper")
+hl.exec_cmd("hyprpaper")
+hl.exec_cmd("gpgconf --launch gpg-agent")
 end)
 
 
@@ -207,8 +208,8 @@ hl.config({
 
 hl.config({
     misc = {
-        force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
+        force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
     },
 })
 
