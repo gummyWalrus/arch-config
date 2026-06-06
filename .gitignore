@@ -13,3 +13,6 @@ trashrc
 # GUI backend config
 nwg-look/
 QtProject.conf
+
+# MISC
+*.bak
