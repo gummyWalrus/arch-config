@@ -3,21 +3,27 @@
 
 This repo contains some `.config` files for LanicOS <3.
 
+> :warning: These were made for Arch Linux and are untested on other distros
+
 LanicOS <3 uses `hyprland`, `wofi` and GTK based apps (among others) to provide some kind of a Wayland based desktop environment with tiling windows. It aims to be customized to fit your style and needs, like I did. So the best thing you can do is fork this repo and make it your own <3.
 
 I have centralized every config file here, even the ones located outside of the `.config` folder, the symlinks required to make it work are listed in the `README.md` and a helper `links.sh` file is provided to create theme.
-
 
 # 1. Dependencies
 
 ## Desktop environment
 
 * hyprland
+* xorg-xwayland
+* hyprpaper
 * waybar
 * wofi
 * sddm
 * gtk (3 & 4)
 * nautilus
+* qt6-svg
+* qt6-virtualkeyboard
+* qt6-multimedia-ffmpeg 
 
 ## Terminal
 
@@ -27,6 +33,24 @@ I have centralized every config file here, even the ones located outside of the 
 ## Utilities
 
 * git
+
+## Resources
+
+* ttf-jetbrains-mono-nerd
+
+## Display manager dependencies
+
+Once you've installed sddm you should install this additionnal dependencies in order for the login screen to work properly
+
+```
+sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg
+```
+
+## IDE (optional)
+
+I use VSCodium as a daily driver IDE so I included some of my own keybings.
+
+* VSCodium
 
 ## Password manager (optional)
 
@@ -51,6 +75,7 @@ git clone git@github.com:gummyWalrus/LanicOS.git ~/.config
 Run `kitty themes` in kiity to list all themes and pick one of your liking, you can then edit `kitty/current-theme.conf` to customize it furthermore.
 
 Install additional fonts via [NerdFonts](https://www.nerdfonts.com/) and view them with `kitty +list-fonts` you can then choose one in `kitty/kitty.conf`.
+
 
 ## (optional) Password manager setup
 

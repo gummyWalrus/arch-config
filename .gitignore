@@ -14,5 +14,5 @@ trashrc
 nwg-look/
 QtProject.conf
 
-# MISC
+# Backup files
 *.bak
