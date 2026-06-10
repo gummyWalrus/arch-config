@@ -373,18 +373,24 @@ hl.window_rule({
 ----------------------
 ---- CONFIG PERSO ----
 ----------------------
+-- Auto smart gaps
+hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
+hl.workspace_rule({ workspace = "f[1]", gaps_out = 0, gaps_in = 0 })
+hl.window_rule({ match = { float = false, workspace = "w[tv1]" }, border_size = 0, rounding = 0 })
+hl.window_rule({ match = { float = false, workspace = "f[1]" }, border_size = 0, rounding = 0 })
 
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
+--- Toggle fullscreen
+
+--- Changing workspace ---
+hl.bind(mainMod .. " + ALT + left", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + ALT + right", hl.dsp.focus({ workspace = "e+1" }))
 
 --- Moving windows
 
 
----
+--- Reload Waybar
 local reload_waybar = "pkill waybar; waybar &"
 hl.bind(mainMod .. "+ R", hl.dsp.exec_cmd(reload_waybar))
-
---- Toggle fullscreen
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen("fullscreen", "toggle"))
-

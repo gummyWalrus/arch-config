@@ -23,7 +23,8 @@ I have centralized every config file here, even the ones located outside of the 
 * nautilus
 * qt6-svg
 * qt6-virtualkeyboard
-* qt6-multimedia-ffmpeg 
+* qt6-multimedia-ffmpeg
+* qt5-declarative
 
 ## Terminal
 
@@ -37,14 +38,6 @@ I have centralized every config file here, even the ones located outside of the 
 ## Resources
 
 * ttf-jetbrains-mono-nerd
-
-## Display manager dependencies
-
-Once you've installed sddm you should install this additionnal dependencies in order for the login screen to work properly
-
-```
-sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg
-```
 
 ## IDE (optional)
 
