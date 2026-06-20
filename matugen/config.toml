@@ -11,8 +11,8 @@
 # below tells hyprpaper to load and switch to the new wallpaper.
 
 [templates.hyprland]
-input_path = '~/.config/matugen/templates/hyprland-colors.conf'
-output_path = '~/.config/hypr/colors.conf'
+input_path = '~/.config/matugen/templates/hyprland-colors.lua'
+output_path = '~/.config/hypr/colors.lua'
 post_hook = '~/.config/matugen/scripts/reload-hyprpaper.sh "{{image}}"'
 
 [templates.hyprlock]

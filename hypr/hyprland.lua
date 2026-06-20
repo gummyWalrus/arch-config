@@ -27,6 +27,9 @@ hl.monitor({
 ---- MY PROGRAMS ----
 ---------------------
 
+-- Import Matugen colors
+local colors      = require("colors")
+
 -- Set programs that you use
 local terminal    = "kitty"
 local fileManager = "nautilus"
@@ -43,8 +46,8 @@ local menu        = "wofi"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
+    hl.exec_cmd("hypridle")
     hl.exec_cmd(terminal)
-    -- hl.exec_cmd("nm-applet")
     hl.exec_cmd("waybar")
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("gpgconf --launch gpg-agent")
@@ -94,8 +97,8 @@ hl.config({
         border_size      = 2,
 
         col              = {
-            active_border   = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-            inactive_border = "rgba(595959aa)",
+            active_border   = { colors = { colors.primary, colors.tertiary }, angle = 45 },
+            inactive_border = colors.on_primary,
         },
 
         -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
@@ -371,7 +374,7 @@ hl.window_rule({
 
 
 ----------------------
----- CONFIG PERSO ----
+---- CONFIG MISC ----
 ----------------------
 -- Auto smart gaps
 hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
