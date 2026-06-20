@@ -14,13 +14,15 @@ I have centralized every config file here, even the ones located outside of the 
 ## Desktop environment
 
 * hyprland
-* xorg-xwayland
 * hyprpaper
+* hypridle
+* hyprlock
 * waybar
 * wofi
 * sddm
 * gtk (3 & 4)
 * nautilus
+* xorg-xwayland
 * qt6-svg
 * qt6-virtualkeyboard
 * qt6-multimedia-ffmpeg
@@ -38,6 +40,12 @@ I have centralized every config file here, even the ones located outside of the 
 ## Resources
 
 * ttf-jetbrains-mono-nerd
+
+## Session manager
+
+It's an AUR package
+
+* uwsm
 
 ## IDE (optional)
 
