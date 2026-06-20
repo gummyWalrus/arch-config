@@ -7,7 +7,7 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces"// ,
+        "hyprland/workspaces",
         // "custom/sep",
         // "hyprland/window"
     ],
@@ -53,7 +53,7 @@
             "3": "",
             "urgent": "",
             "focused": "",
-            "default": ""
+            "default": "󰣇"
         }
     },
     "hyprland/window": {
@@ -119,8 +119,8 @@
         "icon-size": 21,
         "spacing": 10,
         "icons": {
-          "blueman": "bluetooth",
-          "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+            "blueman": "bluetooth",
+            "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
         }
     },
     "clock": {
@@ -250,7 +250,7 @@
         "menu": "on-click",
         "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
         "menu-actions": {
-            "shutdown": "hyprshutdown && sleep 2 && shutdown now",
+            "shutdown": "hyprshutdown --no-exit && sleep 2 && shutdown now",
             "reboot": "reboot",
             "suspend": "systemctl suspend",
             "hibernate": "systemctl hibernate"
