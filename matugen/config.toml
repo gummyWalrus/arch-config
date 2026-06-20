@@ -1,0 +1,38 @@
+# ~/.config/matugen/config.toml
+#
+# Matugen generates a Material You palette from your wallpaper, then writes
+# it into every template listed below. Run:
+#   matugen image /path/to/wallpaper.jpg
+# to regenerate everything at once.
+
+[config]
+# hyprpaper has no built-in "set wallpaper" call the way swww does, so there's
+# no [config.wallpaper] block here. Instead the hyprland template's post_hook
+# below tells hyprpaper to load and switch to the new wallpaper.
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+post_hook = '~/.config/matugen/scripts/reload-hyprpaper.sh "{{image}}"'
+
+[templates.hyprlock]
+input_path = '~/.config/matugen/templates/hyprlock-colors.conf'
+output_path = '~/.config/hypr/colors-hyprlock.conf'
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/waybar-colors.css'
+output_path = '~/.config/waybar/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.wofi]
+input_path = '~/.config/matugen/templates/wofi-colors.css'
+output_path = '~/.config/wofi/colors.css'
+
+[templates.sddm]
+input_path = '~/.config/matugen/templates/sddm-colors.conf'
+output_path = '~/.cache/matugen/sddm-colors.conf'
+# post_hook = '~/.config/matugen/scripts/sync-sddm.sh'
+
+[templates.palette]
+input_path = '~/.config/matugen/templates/palette.css'
+output_path = '~/.config/matugen/current_palette.css'
