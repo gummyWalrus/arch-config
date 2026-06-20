@@ -19,6 +19,12 @@ post_hook = '~/.config/matugen/scripts/reload-hyprpaper.sh "{{image}}"'
 input_path = '~/.config/matugen/templates/hyprlock-colors.conf'
 output_path = '~/.config/hypr/colors-hyprlock.conf'
 
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-theme.conf'
+output_path = '~/.config/kitty/current-theme.conf'
+
+
+
 [templates.waybar]
 input_path = '~/.config/matugen/templates/waybar-colors.css'
 output_path = '~/.config/waybar/colors.css'
