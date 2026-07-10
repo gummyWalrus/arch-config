@@ -31,4 +31,21 @@
 
     --shadow: #{{colors.shadow.default.hex_stripped}};
     --scrim: #{{colors.scrim.default.hex_stripped}};
+
+    --base00: {{base16.base00.default.hex}}; /* Default Background */
+    --base01: {{base16.base01.default.hex}}; /* Lighter Background (Status bars) */
+    --base02: {{base16.base02.default.hex}}; /* Selection Background */
+    --base03: {{base16.base03.default.hex}}; /* Comments, Invisibles */
+    --base04: {{base16.base04.default.hex}}; /* Dark Foreground (Used for status bars) */
+    --base05: {{base16.base05.default.hex}}; /* Default Foreground, Caret, Delimiters */
+    --base06: {{base16.base06.default.hex}}; /* Light Foreground */
+    --base07: {{base16.base07.default.hex}}; /* Light Background */
+    --base08: {{base16.base08.default.hex}}; /* Variables, XML Tags, Red */
+    --base09: {{base16.base09.default.hex}}; /* Integers, Boolean, Constants, Orange */
+    --base0a: {{base16.base0a.default.hex}}; /* Classes, Strings, Functions, Yellow */
+    --base0b: {{base16.base0b.default.hex}}; /* Strings, Inherited Class, Green */
+    --base0c: {{base16.base0c.default.hex}}; /* Support, Regex, Escape Characters, Cyan */
+    --base0d: {{base16.base0d.default.hex}}; /* Functions, Methods, Attribute IDs, Blue */
+    --base0e: {{base16.base0e.default.hex}}; /* Keywords, Storage, Selector, Magenta */
+    --base0f: {{base16.base0f.default.hex}}; /* Deprecated, Opening/Closing Embedded Tags, Brown */
 }

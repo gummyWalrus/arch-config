@@ -115,11 +115,11 @@ setprompt () {
     ###
     # Finally, the prompt.
     
-    PROMPT='`rvm_prompt_info || rbenv_prompt_info`$PR_CYAN$PR_HBAR$PR_BLUE(\
-%{$reset_color%}$FG[047]%(!.%SROOT%s.%n) \
-$PR_BLUE$FG[047]%$PR_PWDLEN<...<%~%<<\
-%{$reset_color%}`git_prompt_info`$PR_BLUE)
- $FG[047]λ %{$reset_color%}'
+    PROMPT='`rvm_prompt_info || rbenv_prompt_info`$PR_LIGHT_GREEN$PR_HBAR(\
+%{$reset_color%}%(!.%SROOT%s.%n) \
+$PR_CYAN%$PR_PWDLEN<...<%~%<<\
+%{$reset_color%}`git_prompt_info`$PR_LIGHT_GREEN)
+ %{$reset_color%} λ '
 
     # display exitcode on the right when >0
     return_code="%(?..%{$fg[red]%}%? ↵ %{$reset_color%})"

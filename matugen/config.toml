@@ -21,9 +21,17 @@ output_path = '~/.config/hypr/colors-hyprlock.conf'
 
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty-theme.conf'
-output_path = '~/.config/kitty/current-theme.conf'
+output_path = '~/.config/kitty/themes/Matugen.conf'
+post_hook = "kitty +kitten themes --reload-in=all Matugen"
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/colors.css'
 
 
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-3.0/colors.css'
 
 [templates.waybar]
 input_path = '~/.config/matugen/templates/waybar-colors.css'
