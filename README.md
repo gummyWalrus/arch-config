@@ -36,6 +36,7 @@ I have centralized every config file here, even the ones located outside of the 
 ## Utilities
 
 * git
+* cliphist
 
 ## Resources
 
@@ -46,6 +47,18 @@ I have centralized every config file here, even the ones located outside of the 
 It's an AUR package
 
 * uwsm
+
+## Shortcuts
+
+|---------|-------------------------|
+| Cmd + V | View clipboard history  |
+|---------|-------------------------|
+
+## Screenshots
+
+* grim
+* slurp
+* swappy
 
 ## IDE (optional)
 
@@ -109,5 +122,3 @@ pass init ABCD1234EFGH5678
 ```
 
 Refer to the [pass documentation]() to insert, show and edit passwords.
-
-
