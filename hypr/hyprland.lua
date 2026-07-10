@@ -16,11 +16,13 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "",
+    output   = "eDP-1",
     mode     = "1920x1200",
-    position = "auto",
+    position = "0x0",
     scale    = "1.0",
 })
+
+hl.monitor({ output = "", mode = "1920x1080", position = "-1920x0", scale = 1 })
 
 
 ---------------------
@@ -47,10 +49,15 @@ local menu        = "wofi"
 --
 hl.on("hyprland.start", function()
     hl.exec_cmd("hypridle")
-    hl.exec_cmd(terminal)
     hl.exec_cmd("waybar")
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("gpgconf --launch gpg-agent")
+
+    -- To enable clipboard history for text and image
+    hl.exec_cmd("wl-paste --type text --watch cliphist store")
+    hl.exec_cmd("wl-paste --type image --watch cliphist store")
+
+    hl.exec_cmd(terminal)
 end)
 
 
@@ -166,24 +173,6 @@ hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "al
 hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
 
--- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
--- "Smart gaps" / "No gaps when only"
--- uncomment all if you wish to use that.
--- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
--- hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
--- hl.window_rule({
---     name  = "no-gaps-wtv1",
---     match = { float = false, workspace = "w[tv1]" },
---     border_size = 0,
---     rounding    = 0,
--- })
--- hl.window_rule({
---     name  = "no-gaps-f1",
---     match = { float = false, workspace = "f[1]" },
---     border_size = 0,
---     rounding    = 0,
--- })
-
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
     dwindle = {
@@ -264,7 +253,7 @@ hl.device({
 ---- KEYBINDINGS ----
 ---------------------
 
-local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
@@ -273,7 +262,7 @@ local closeWindowBind = hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close()
 hl.bind(mainMod .. " + SHIFT + M",
     hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+-- hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
@@ -373,27 +362,8 @@ hl.window_rule({
 })
 
 
-----------------------
----- CONFIG MISC ----
-----------------------
--- Auto smart gaps
-hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
-hl.workspace_rule({ workspace = "f[1]", gaps_out = 0, gaps_in = 0 })
-hl.window_rule({ match = { float = false, workspace = "w[tv1]" }, border_size = 0, rounding = 0 })
-hl.window_rule({ match = { float = false, workspace = "f[1]" }, border_size = 0, rounding = 0 })
 
----------------------
----- KEYBINDINGS ----
----------------------
---- Toggle fullscreen
-
---- Changing workspace ---
-hl.bind(mainMod .. " + ALT + left", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + ALT + right", hl.dsp.focus({ workspace = "e+1" }))
-
---- Moving windows
-
-
---- Reload Waybar
-local reload_waybar = "pkill waybar; waybar &"
-hl.bind(mainMod .. "+ R", hl.dsp.exec_cmd(reload_waybar))
+--- ADDITIONNAL ---
+--- keybinds    ---
+require('custom.keybinds')
+require('custom.smartGaps')
