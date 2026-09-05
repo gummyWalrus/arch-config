@@ -1,0 +1,13 @@
+/* ~/.config/matugen/templates/wofi-colors.css */
+/* Generates ~/.config/wofi/colors.css — imported at the top of style.css */
+
+@define-color primary             #f9b1db;
+@define-color on_primary          #501e40;
+@define-color primary_container   #6a3458;
+@define-color on_primary_container #ffd8ec;
+
+@define-color surface             #181115;
+@define-color on_surface          #eddfe4;
+@define-color surface_container   #251e21;
+
+@define-color outline             #9c8d93;

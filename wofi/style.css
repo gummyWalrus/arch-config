@@ -1,3 +1,5 @@
+@import url("/home/lololanico/.config/wofi/colors.css");
+
 * {
     font-family: "JetBrainsMono Nerd Font", monospace;
     font-size: 16px;
@@ -6,34 +8,39 @@
 
 window {
     margin: 0px;
-    border: 2px solid #414868;
+    border: 2px solid @on_primary;
     border-radius: 5px;
-    background-color: #24283b;
+    background-color: @surface;
     font-family: monospace;
     font-size: 12px;
+    border-radius: 5px;
 }
 
 #input {
     margin: 5px;
-    border: 1px solid #24283b;
-    color: #c0caf5;
-    background-color: #24283b;
+    border: 1px solid @on_primary;
+    color: @primary;
+    background-color: @surface;
+}
+
+#input:selected {
+
 }
 
 #input image {
-    color: #c0caf5;
+    color: @primary;
 }
 
 #inner-box {
-    margin: 5px;
+    /* margin: 5px; */
     border: none;
-    background-color: #24283b;
+    background-color: @surface;
 }
 
 #outer-box {
-    margin: 5px;
+    margin: 1px;
     border: none;
-    background-color: #24283b;
+    background-color: @surface;
 }
 
 #scroll {
@@ -44,15 +51,17 @@ window {
 #text {
     margin: 5px;
     border: none;
-    color: #c0caf5;
+    color: @on_surface;
 }
 
 #entry:selected {
-    background-color: #414868;
+    background-color: @on_primary;
+    border-left: 1px solid @primary; 
+    border-right: 1px solid @primary; 
     /* font-weight: normal; */
 }
 
 #text:selected {
-    background-color: #414868;
+    background-color: @on_primary;
     /* font-weight: normal; */
 }
