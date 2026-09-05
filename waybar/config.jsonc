@@ -19,8 +19,6 @@
         // "idle_inhibitor",
         "pulseaudio",
         "custom/sep",
-        "network",
-        "custom/sep",
         "cpu",
         "custom/sep",
         "memory",
@@ -29,19 +27,32 @@
         // "backlight",
         // "custom/sep",
         // "keyboard-state",
-        // "sway/language",
+        "custom/sep",
+        // "clock",
+        // "custom/sep",
+        // "tray",
+        // "custom/sep",
+        "network",
+        "custom/sep",
+        "bluetooth",
         "custom/sep",
         "battery",
         // "battery#bat2",
         "custom/sep",
-        // "clock",
-        // "custom/sep",
-        "tray",
-        // "custom/sep",
         "power-profiles-daemon",
+        "custom/sep",
+        "hyprland/language",
         "custom/sep",
         "custom/power"
     ],
+    "hyprland/language": {
+        "format": "{} 󰌌",
+        "format-en": "US",
+        "format-us": "US",
+        "format-fr": "FR",
+        "on-click": "hyprctl switchxkblayout current next",
+        "tooltip": "Alt + Shift : switch layout"
+    },
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -49,7 +60,7 @@
         "format": "{name} {icon}",
         "format-icons": {
             "1": "",
-            "2": "",
+            "2": "",
             "3": "",
             "urgent": "",
             "focused": "",
@@ -128,14 +139,15 @@
         "locale": "C",
         "format": "{:%H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%Y-%m-%d}",
+        "calendar": {}
     },
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
     },
     "memory": {
-        "format": "RAM {}%"
+        "format": "{}%  "
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -166,24 +178,51 @@
     },
     "battery": {
         "states": {
-            // "good": 95,
-            "warning": 30,
+            "good": 95,
+            // "warning": 30,
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
+        "format-icons": {
+            "default": [
+                "󰂎",
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+            ],
+            "charging": [
+                "󰢜",
+                "󰂆",
+                "󰂇",
+                "󰂈",
+                "󰢝",
+                "󰂉",
+                "󰢞",
+                "󰂊",
+                "󰂋",
+                "󰂅"
+            ],
+            "critical": [
+                "󱃍"
+            ],
+            "plugged": [
+                "󱠴"
+            ],
+            "full": [
+                "󱈏"
+            ],
+            // "good": [
+            //     "󱈏"
+            // ]
+        }
     },
     "battery#bat2": {
         "bat": "BAT2"
@@ -201,26 +240,35 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-wifi": "{signalStrength}% {icon}",
+        "format-ethernet": "{ipaddr}/{cidr}  ",
+        "tooltip-format-wifi": "{essid}\n{ipaddr}\n\n{bandwidthUpOctets}   {bandwidthDownOctets} ",
+        "tooltip-format": "{ifname} via {gwaddr}\n{ipaddr}\n\n{bandwidthUpOctets}   {bandwidthDownOctets} ",
+        "format-linked": "{ifname} (No IP) 󱖣 ",
+        "format-disconnected": "Disconnected ⚠ ",
+        // "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "$HOME/.config/waybar/scripts/wifi-menu.sh",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ]
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         // "format": "{volume}% {icon} {format_source}",
         "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-bluetooth": " {volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " 󰋐 {format_source}",
+        "format-muted": "󰝟",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "󰋎",
             "phone": "",
             "portable": "",
             "car": "",
@@ -231,6 +279,20 @@
             ]
         },
         "on-click": "pavucontrol"
+    },
+    
+    "bluetooth": {
+        // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+        "format": "",// " {status}",
+        "format-disabled": "󰂲", // an empty format will hide the module
+        "format-off": "󰂲", // an empty format will hide the module
+        "format-connected": "󰂱",
+        "format-discovering": "󰂳",
+        "tooltip-format": "{num_connections} connected\n{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "$HOME/.config/waybar/scripts/bluetooth-menu.sh",
+        "on-click-right": "$HOME/.config/waybar/scripts/bt-toggle.sh"
     },
     "custom/media": {
         "format": "{icon} {text}",
@@ -246,14 +308,15 @@
     },
     "custom/power": {
         "format": "⏻ ",
-        "tooltip": false,
         "menu": "on-click",
+        "tooltip": false,
         "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
         "menu-actions": {
             "shutdown": "hyprshutdown --no-exit && sleep 2 && shutdown now",
-            "reboot": "reboot",
+            "reboot": "hyprshutdown --no-exit && sleep 2 && reboot",
             "suspend": "systemctl suspend",
-            "hibernate": "systemctl hibernate"
+            "hibernate": "systemctl hibernate",
+            "lock": "loginctl lock-session"
         }
     },
     "custom/sep": {

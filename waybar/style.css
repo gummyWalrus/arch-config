@@ -63,14 +63,16 @@ button {
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
-    border-bottom: 3px solid @surface;
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
 }
 
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: @primary_container;
+#workspaces button:hover {
+    background: @surface;
+    border: @primary_container;
+    border-bottom: 3px solid @primary_container;
+    padding: 0 15px;
 }
 
 #workspaces button.urgent {
@@ -121,8 +123,9 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
-#mpd {
-    padding: 0px 10px;
+#mpd,
+#bluetooth {
+    padding: 0px 10px 0px 10px;
     background-color: @surface;
     border-bottom: 3px solid @primary_container;
 }
@@ -133,9 +136,9 @@ button:hover {
 }
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left>widget:first-child>#workspaces {
+/* .modules-left>widget:first-child>#workspaces {
     margin-left: 0;
-}
+} */
 
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right>widget:last-child>#workspaces {
@@ -158,18 +161,18 @@ button:hover {
     color: @grn;
 }
 
-@keyframes blink {
+@keyframes blink_error {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: @surface;
+        color: @primary;
     }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
     background-color: @error;
-    color: #ffffff;
-    animation-name: blink;
+    color: @on_error;
+    animation-name: blink_error;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
@@ -183,7 +186,7 @@ button:hover {
 
 #power-profiles-daemon.performance {
     background-color: @error;
-    color: @surface;
+    color: @on_error;
 }
 
 #power-profiles-daemon.balanced {
@@ -215,14 +218,14 @@ label:focus {
 
 #network.disconnected {
     background-color: @error;
+    color: @on_error;
 }
 
 #pulseaudio {
 }
 
 #pulseaudio.muted {
-    background-color: @surface;
-    color: gray;
+    color: @on_primary;
 }
 
 #wireplumber {
@@ -231,6 +234,7 @@ label:focus {
 
 #wireplumber.muted {
     background-color: @error;
+
 }
 
 #custom-media {
@@ -295,10 +299,8 @@ label:focus {
 }
 
 #language {
-    background: #00b093;
-    color: #740864;
     padding: 0 5px;
-    margin: 0 5px;
+    margin: 5px 5px;
     min-width: 16px;
 }
 
@@ -354,9 +356,22 @@ label:focus {
 #memory,
 #disk,
 #network,
-#tray {
+#tray,
+#language {
     color: @primary;
 }
+
+/* you can set a style on hover for any module like this */
+.modules-left:hover
+{
+    background-color: @primary_container;
+}
+
+.modules-right button.module:hover {
+    background-color: @primary_container;
+
+}
+
 
 #custom-sep {
     color: @on_primary;
@@ -365,4 +380,60 @@ label:focus {
 #clock {
     padding-top: 3px;
     font-family: "Orbitron", "JetBrainsMono Nerd Font";
+}
+
+/* Popover menu styles */
+menu {
+    color: @primary;
+    background-color: @surface;
+    border-radius: 0px;
+    border: 1px solid @on_primary;
+}
+
+menuitem {
+    border-left: 1px solid @on_primary;
+    border-right: 1px solid @on_primary;
+}
+menuitem:hover {
+    background-color: @on_primary;
+    color: @primary;
+    border-left: 1px solid @primary;
+    border-right: 1px solid @primary;
+}
+
+#bluetooth {
+    color: @on_primary;
+}
+
+#bluetooth.connected {
+    color: @primary;
+}
+
+
+@keyframes colorFade {
+    from {
+        color: @on_primary;
+    }
+    to {
+        color: @primary;
+    }
+}
+
+#bluetooth.discovering {
+    animation-name: colorFade;
+    animation-duration: 1s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+tooltip {
+    border: 1.5px solid @on_primary;
+    border-radius: 0px;
+    background: @surface_transparent;
+    color: @primary;
+}
+
+tooltip label {
+    color: @primary;
 }
