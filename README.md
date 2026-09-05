@@ -17,12 +17,16 @@ I have centralized every config file here, even the ones located outside of the 
 * hyprpaper
 * hypridle
 * hyprlock
+* swaync
 * waybar
 * wofi
 * sddm
 * gtk (3 & 4)
 * nautilus
 * xorg-xwayland
+
+# SDDM Themes
+
 * qt6-svg
 * qt6-virtualkeyboard
 * qt6-multimedia-ffmpeg

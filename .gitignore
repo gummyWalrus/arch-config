@@ -9,10 +9,32 @@ dconf/
 pulse/
 trashrc
 
+mimeapps.list
+
+# Nautilus
+user-dirs.dirs
+user-dirs.locale
+
+# Thunderbird
+thunderbird/
 
 # GUI backend config
 nwg-look/
 QtProject.conf
 
+# Generated colors files
+gtk-3.0/colors.css
+gtk-4.0/colors.css
+hypr/colors.lua
+hypr/colors-hyprlock.conf
+matugen/current_palette.css
+waybar/colors.css
+
+# Symlink to current wallpaper
+hypr/CURRENT_WALLPAPER
+
 # Backup files
 *.bak
+
+# Temporary files
+themes/Nordic-bluish-accent
