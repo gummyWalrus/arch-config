@@ -119,7 +119,7 @@ setprompt () {
 %{$reset_color%}%(!.%SROOT%s.%n) \
 $PR_CYAN%$PR_PWDLEN<...<%~%<<\
 %{$reset_color%}`git_prompt_info`$PR_LIGHT_GREEN)
- %{$reset_color%} λ '
+ λ '
 
     # display exitcode on the right when >0
     return_code="%(?..%{$fg[red]%}%? ↵ %{$reset_color%})"
