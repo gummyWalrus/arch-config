@@ -17,7 +17,6 @@ I have centralized every config file here, even the ones located outside of the 
 * hyprpaper
 * hypridle
 * hyprlock
-* swaync
 * waybar
 * wofi
 * sddm
