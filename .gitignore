@@ -29,6 +29,7 @@ hypr/colors.lua
 hypr/colors-hyprlock.conf
 matugen/current_palette.css
 waybar/colors.css
+swaync/colors.css
 
 # Symlink to current wallpaper
 hypr/CURRENT_WALLPAPER

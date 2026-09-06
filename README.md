@@ -1,13 +1,20 @@
-# LanicOS <3 : Cool Arch Linux config 
+# LanicOS <3 : Cool Arch Linux x Wayland config 
 ---
 
 This repo contains some `.config` files for LanicOS <3.
 
-> :warning: These were made for Arch Linux and are untested on other distros
+> :warning: These were made for Arch Linux and are untested on other distros, although there are few chances of breakage since it's very high level
 
-LanicOS <3 uses `hyprland`, `wofi` and GTK based apps (among others) to provide some kind of a Wayland based desktop environment with tiling windows. It aims to be customized to fit your style and needs, like I did. So the best thing you can do is fork this repo and make it your own <3.
+LanicOS <3 uses `hyprland`, `wofi` and GTK based apps (among others) to provide some kind of a Wayland based desktop environment with tiling windows. It aims to be customized to fit your style and needs. So the best thing you can do is fork this repo and make it your own <3.
 
 I have centralized every config file here, even the ones located outside of the `.config` folder, the symlinks required to make it work are listed in the `README.md` and a helper `links.sh` file is provided to create them.
+
+> Note : A noswaync branch is available if you want averything to be in waybar rather than swaync
+
+## Special Thanks
+
+* To [Keyitdev](https://github.com/Keyitdev) for [sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme) that I used as a base for my own SDDM theme (didn't have to change much tho)
+* TODO : Find the article where I got the initial waybar config from
 
 # 1. Dependencies
 

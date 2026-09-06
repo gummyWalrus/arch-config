@@ -43,6 +43,8 @@
         "custom/sep",
         "hyprland/language",
         "custom/sep",
+        "custom/notification",
+        "custom/sep",
         "custom/power"
     ],
     "hyprland/language": {
@@ -280,10 +282,9 @@
         },
         "on-click": "pavucontrol"
     },
-    
     "bluetooth": {
         // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-        "format": "",// " {status}",
+        "format": "", // " {status}",
         "format-disabled": "󰂲", // an empty format will hide the module
         "format-off": "󰂲", // an empty format will hide the module
         "format-connected": "󰂱",
@@ -323,5 +324,25 @@
         "format": "|",
         "interval": 0,
         "tooltip": false
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<sup>󰀽</sup>",
+            "none": "󰂚",
+            "dnd-notification": "<sup>󰀽</sup></span>",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "<sup>󰀽</sup>",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "<sup>󰀽</sup>",
+            "dnd-inhibited-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client --subscribe-waybar --skip-wait",
+        "on-click": "swaync-client --toggle-panel --skip-wait",
+        "on-click-right": "swaync-client --toggle-dnd --skip-wait",
+        "escape": true
     }
 }
