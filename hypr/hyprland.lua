@@ -22,7 +22,7 @@ hl.monitor({
     scale    = "1.0",
 })
 
-hl.monitor({ output = "", mode = "1920x1080", position = "-1920x0", scale = 1 })
+hl.monitor({ output = "", mode = "1920x1080", position = "1920x0", scale = 1 })
 
 
 ---------------------
@@ -36,7 +36,7 @@ local colors      = require("colors")
 local terminal    = "kitty"
 local fileManager = "nautilus"
 local menu        = "wofi"
--- local browser	  = "app.zen_browser.zen"
+local browser	  = "app.zen_browser.zen"
 
 -------------------
 ---- AUTOSTART ----
@@ -48,14 +48,13 @@ local menu        = "wofi"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
-    hl.exec_cmd("hypridle")
-    hl.exec_cmd("waybar")
-    hl.exec_cmd("hyprpaper")
-    hl.exec_cmd("gpgconf --launch gpg-agent")
+    -- hypridle, hyprpaper and gpg-agent run as systemd user units, see "Required services" in ~/.config/README.md
 
     -- To enable clipboard history for text and image
-    hl.exec_cmd("wl-paste --type text --watch cliphist store")
-    hl.exec_cmd("wl-paste --type image --watch cliphist store")
+    hl.exec_cmd("uwsm app -- wl-paste --type text --watch cliphist store")
+    hl.exec_cmd("uwsm app -- wl-paste --type image --watch cliphist store")
+
+    hl.exec_cmd("uwsm app -- quickshell -c lanicOS")
 
     hl.exec_cmd(terminal)
 end)

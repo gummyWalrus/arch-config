@@ -133,3 +133,31 @@ pass init ABCD1234EFGH5678
 ```
 
 Refer to the [pass documentation]() to insert, show and edit passwords.
+
+# 3. Required services
+
+Hyprland runs under uwsm, so long-running daemons are started by systemd instead of `hyprland.lua`.
+They start with the graphical session, stop on logout, restart on crash and log to the journal.
+
+| Service | Purpose |
+|---|---|
+| `hypridle.service` | Idle management (screen dim, lock, suspend) |
+| `hyprpaper.service` | Wallpaper |
+| `gpg-agent.socket` | GPG agent for `pass`, started on first use |
+
+Enable hypridle and hyprpaper:
+
+```bash
+systemctl --user enable --now hypridle.service hyprpaper.service
+```
+
+`gpg-agent.socket` is enabled globally by the `gnupg` package on Arch, check it with:
+
+```bash
+systemctl --user status gpg-agent.socket
+```
+
+If it is inactive, enable it with `systemctl --user enable --now gpg-agent.socket`.
+
+Clipboard history (`cliphist`) is still launched from `hyprland.lua`, wrapped in `uwsm app --`.
+Logs for any of these can be read with `journalctl --user -u <service>`.
