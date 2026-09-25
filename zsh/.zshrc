@@ -104,3 +104,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Lets qmlls (QML language server) resolve QtQuick/Quickshell types for editor completion
+export QML_IMPORT_PATH="/usr/lib/qt6/qml"
