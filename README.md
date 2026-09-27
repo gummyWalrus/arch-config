@@ -33,6 +33,7 @@ Here are ressources that got me started on that config and inspired me to create
 * Add a wallpaper picker
 * Add a player controller (music, browser videos) and volume mixer
 * Fix hibernate mode (Is kind of device specific so... Work it out yourself)
+* Remove unused config files
 
 # 1. Dependencies
 
