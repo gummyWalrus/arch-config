@@ -32,9 +32,11 @@ Here are ressources that got me started on that config and inspired me to create
       5. About page
 * Add a wallpaper picker
 * Add a player controller (music, browser videos) and volume mixer
+* Add notification client
 * Fix hibernate mode (Is kind of device specific so... Work it out yourself)
 * Remove unused config files
 * Proper GTK theming so unthemed windows stop popping right in me face TwT
+* Add system tray client (I'm not much of a systray guy, so, not happening soon)
 
 # 1. Dependencies
 
