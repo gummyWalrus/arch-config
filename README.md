@@ -34,6 +34,7 @@ Here are ressources that got me started on that config and inspired me to create
 * Add a player controller (music, browser videos) and volume mixer
 * Fix hibernate mode (Is kind of device specific so... Work it out yourself)
 * Remove unused config files
+* Proper GTK theming so unthemed windows stop popping right in me face TwT
 
 # 1. Dependencies
 
