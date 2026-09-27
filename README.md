@@ -23,6 +23,16 @@ Here are ressources that got me started on that config and inspired me to create
 ## Project TODOS
 
 * Add an emoji picker
+* Add a system monitor
+* Add a settings "application"
+      1. Bluetooth
+      2. Wif-Fi
+      3. Monitors
+      4. qs.config preferences
+      5. About page
+* Add a wallpaper picker
+* Add a player controller (music, browser videos) and volume mixer
+* Fix hibernate mode (Is kind of device specific so... Work it out yourself)
 
 # 1. Dependencies
 
