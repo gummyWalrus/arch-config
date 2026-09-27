@@ -29,6 +29,7 @@ Here are ressources that got me started on that config and inspired me to create
       2. Wif-Fi
       3. Monitors
       4. qs.config preferences
+      5. Proper external services management ? (Calendar, mails ?, Google Drive eeeeeewwww among others)
       5. About page
 * Add a wallpaper picker
 * Add a player controller (music, browser videos) and volume mixer
@@ -36,6 +37,7 @@ Here are ressources that got me started on that config and inspired me to create
 * Fix hibernate mode (Is kind of device specific so... Work it out yourself)
 * Remove unused config files
 * Proper GTK theming so unthemed windows stop popping right in me face TwT
+* Add calendar client when clicked on date ( throught thunderbird or is there an easier way ?)
 * Add system tray client (I'm not much of a systray guy, so, not happening soon)
 
 # 1. Dependencies
