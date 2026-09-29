@@ -4,5 +4,19 @@
         "{git,gitlens,chat-editing-snapshot-text-model,copilot,git-graph,git-graph-3}:/**/*.qrc": "default",
         "*.qrc": "qt-core.qrcEditor"
     },
-    "editor.formatOnSave": true
+    "qt-qml.qmlls.useQmlImportPathEnvVar": true,
+    "qt-qml.qmlls.customExePath": "/usr/bin/qmlls6",
+    "qt-qml.qmlls.additionalImportPaths": [
+        "/home/lololanico/.config/quickshell/.qmlimports"
+    ],
+    "qt-core.additionalQtPaths": [
+        {
+            "name": "Qt-5.15.19-linux-g++-x86_64_from_PATH",
+            "path": "/usr/bin/qmake"
+        }
+    ],
+    "claudeCode.preferredLocation": "panel",
+    "qt-qml.doNotAskForQmllsDownload": true,
+    "claudeCode.hideOnboarding": true,
+    "qt-core.showWelcomePageOnActivation": false
 }
