@@ -22,22 +22,24 @@ Here are ressources that got me started on that config and inspired me to create
 
 ## Project TODOS
 
-* Add an emoji picker
+* Proper GTK theming so unthemed windows stop popping right in me face TwT
 * Add a system monitor
 * Add a settings "application"
+      0. Audio output picker (Between HDMI, Bluetooth and shit...)
       1. Bluetooth
       2. Wif-Fi
       3. Monitors
       4. qs.config preferences
       5. Proper external services management ? (Calendar, mails ?, Google Drive eeeeeewwww among others)
       5. About page
-* Add a wallpaper picker
-* Add a player controller (music, browser videos) and volume mixer
 * Add notification client
-* Fix hibernate mode (Is kind of device specific so... Work it out yourself)
+* Add a player controller (music, browser videos) and volume mixer
+* Add a wallpaper picker
+* Add an emoji picker
 * Remove unused config files
-* Proper GTK theming so unthemed windows stop popping right in me face TwT
-* Add calendar client when clicked on date ( throught thunderbird or is there an easier way ?)
+* Proper lockscreen via hyprlock or quickshell
+* Add calendar client when clicked on date (through thunderbird or is there an easier way ?)
+* Fix hibernate mode (Is kind of device specific so... Work it out yourself)
 * Add system tray client (I'm not much of a systray guy, so, not happening soon)
 
 # 1. Dependencies
