@@ -371,6 +371,33 @@ padding: 2px 4px; */
 /* color: @on_secondary_container; */
 /* } */
 /*  */
+
+/* grid items (Nautilus icon view) match quickshell NeonMenuItem */
+gridview > child {
+color: @primary;
+border: 1px solid transparent;
+border-radius: 0;
+box-shadow: none;
+transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+gridview > child:hover {
+background-color: @primary_container;
+border-color: @primary;
+animation: neon-pulse 1600ms ease-in-out infinite;
+}
+
+gridview > child:selected,
+gridview > child:selected:hover {
+background-color: @primary;
+border-color: @primary;
+color: @on_primary;
+animation: neon-pulse 1600ms ease-in-out infinite;
+}
+
+gridview > child:selected label {
+font-weight: bold;
+}
 /* ── Popover ──────────────────────────────────────────────────── */
 /* popover>contents { */
 /* background-color: @popover_bg_color; */
@@ -609,18 +636,18 @@ margin: 6px 0;
 /* border-radius: 9999px; */
 /* } */
 /*  */
-── Spinner ────────────────────────────────────────────────────
+/* ── Spinner ──────────────────────────────────────────────────── */
 /* spinner { */
 /* color: @primary; */
 /* } */
 /*  */
-── Global selection ───────────────────────────────────────────
+/* ── Global selection ─────────────────────────────────────────── */
 /* *:selected { */
 /* background-color: alpha(@primary, 0.25); */
 /* color: @on_surface; */
 /* } */
 /*  */
-── Nautilus specifics ─────────────────────────────────────────
+/* ── Nautilus specifics ───────────────────────────────────────── */
 /* .nautilus-canvas-item:selected { */
 /* background-color: @secondary_container; */
 /* color: @on_secondary_container; */
