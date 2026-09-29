@@ -112,6 +112,73 @@ min-height: 34px;
 box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
 }
 
+/* Nautilus location entry (Ctrl+L): same neon block as the path bar */
+.nautilus-window headerbar stack > box.linked {
+background-color: @surface;
+border: 2px solid @primary;
+border-radius: 0;
+box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+}
+
+/* the entry fills the block; 46px = bar's 50px outer height minus the 2px top/bottom border */
+.nautilus-window headerbar stack > box.linked > entry {
+background-color: transparent;
+color: @primary;
+caret-color: @primary;
+border: none;
+border-radius: 0;
+box-shadow: none;
+outline: none;
+min-height: 46px;
+padding: 0 12px;
+}
+
+.nautilus-window headerbar stack > box.linked > entry selection {
+background-color: alpha(@primary, 0.3);
+}
+
+/* cancel button blends in like the path-bar buttons; hover keeps the neon hover */
+.nautilus-window headerbar stack > box.linked > button {
+background-color: transparent;
+border-color: transparent;
+}
+
+.nautilus-window headerbar stack > box.linked > button:hover {
+background-color: @primary_container;
+}
+
+/* Nautilus "Search everywhere" query editor: same neon block as the location entry */
+.nautilus-query-editor,
+.nautilus-query-editor:focus-within {
+background-color: @surface;
+color: @primary;
+caret-color: @primary;
+border: 2px solid @primary;
+border-radius: 0;
+box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+outline: none;
+min-height: 46px;
+padding: 0 12px;
+}
+
+.nautilus-query-editor selection {
+background-color: alpha(@primary, 0.3);
+}
+
+/* filters button blends in like the path-bar buttons; hover and open keep the neon states */
+.nautilus-query-editor > menubutton > button {
+background-color: transparent;
+border-color: transparent;
+}
+
+.nautilus-query-editor > menubutton > button:hover {
+background-color: @primary_container;
+}
+
+.nautilus-query-editor > menubutton > button:checked {
+background-color: @primary;
+}
+
 /* window controls (minimize/maximize/close) sit directly on the header bar */
 windowcontrols > button {
 background-color: transparent;
