@@ -24,9 +24,8 @@ fi
 
 # Apply to every connected monitor (covers single 1900x1200 display setups
 # and multi-monitor setups alike, without hardcoding a monitor name)
-for monitor in $(hyprctl monitors -j | grep -oP '"name":\s*"[^"]+"' | cut -d'"' -f4); do
-    # hyprctl hyprpaper wallpaper "$monitor,$WALLPAPER"
-    hyprctl hyprpaper wallpaper "eDP-1,$WALLPAPER,"
+for monitor in $(hyprctl monitors -j | jq -r '.[].name'); do
+    hyprctl hyprpaper wallpaper "$monitor,$WALLPAPER,"
 done
 
 # Unload anything that's no longer in use to free memory
