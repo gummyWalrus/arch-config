@@ -78,6 +78,51 @@ color: alpha(@primary, 0.4);
 animation: none;
 }
 
+/* switches (incl. libadwaita switch rows) follow the button states: square,
+   hover = container fill + neon border + pulse, on = primary fill + pulse.
+   A faint idle border keeps the off track readable. */
+switch {
+background-color: transparent;
+background-image: none;
+color: @primary;
+border: 2px solid alpha(@primary, 0.4);
+border-radius: 0;
+padding: 2px;
+box-shadow: none;
+outline: none;
+transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+switch:hover {
+background-color: @primary_container;
+border-color: @primary;
+animation: neon-pulse 1600ms ease-in-out infinite;
+}
+
+switch:checked,
+switch:checked:hover {
+background-color: @primary;
+background-image: none;
+border-color: @primary;
+color: @on_primary;
+animation: neon-pulse 1600ms ease-in-out infinite;
+}
+
+switch:disabled {
+border-color: alpha(@primary, 0.2);
+animation: none;
+}
+
+/* the knob: a square block in the text color, so it flips to @on_primary when on */
+switch > slider,
+switch:hover > slider,
+switch:active > slider,
+switch:checked > slider {
+background-color: currentColor;
+border-radius: 0;
+box-shadow: none;
+}
+
 /* Nautilus path bar: one surface block with a square, steady neon border */
 .nautilus-pathbar {
 background-color: @surface;
