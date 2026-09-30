@@ -123,6 +123,49 @@ border-radius: 0;
 box-shadow: none;
 }
 
+/* tabs (libadwaita tab bar + classic notebook) follow the button states:
+   square, hover = container fill + neon border + pulse; the active tab keeps that look, steady glow, bold */
+tabbar tab,
+notebook > header > tabs > tab {
+background-color: transparent;
+background-image: none;
+color: @primary;
+border: 2px solid transparent;
+border-radius: 0;
+box-shadow: none;
+outline: none;
+transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+/* the focus/drag wrapper around each libadwaita tab is rounded too */
+tabbar tabbox > tabboxchild {
+border-radius: 0;
+}
+
+tabbar tab:hover,
+notebook > header > tabs > tab:hover {
+background-color: @primary_container;
+border-color: @primary;
+animation: neon-pulse 1600ms ease-in-out infinite;
+}
+
+/* active tab = the button hover look with a steady (not pulsing) glow and a bold title */
+tabbar tab:selected,
+tabbar tab:selected:hover,
+notebook > header > tabs > tab:checked,
+notebook > header > tabs > tab:checked:hover {
+background-color: @primary_container;
+border-color: @primary;
+color: @primary;
+animation: none;
+box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+}
+
+tabbar tab:selected label,
+notebook > header > tabs > tab:checked label {
+font-weight: bold;
+}
+
 /* Nautilus path bar: one surface block with a square, steady neon border */
 .nautilus-pathbar {
 background-color: @surface;
