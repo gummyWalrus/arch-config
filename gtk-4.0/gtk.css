@@ -1,287 +1,275 @@
 /* ═══════════════════════════════════════════════════════════════
    Material You GTK 4.0 Theme
    Colors loaded from gtk-colors.css (Matugen-generated)
+   Entering Vibe coded territory, this code was vaguely reviewed
    ═══════════════════════════════════════════════════════════════ */
 
 @import url("colors.css");
 
 /* ── Base ─────────────────────────────────────────────────────── */
 window.background {
-  background-color: @window_bg_color;
-  color: @window_fg_color;
-  font-family: "JetBrainsMono Nerd Font";
+   background-color: @window_bg_color;
+   color: @window_fg_color;
+   font-family: "JetBrainsMono Nerd Font";
 }
 
-/* /* ── Header bar ───────────────────────────────────────────────── *? */
-headerbar {
-/* background-color: purple; */
-color: @headerbar_fg_color;
-/* border-bottom: 1px solid @headerbar_border_color;
-box-shadow: 0 1px 3px @headerbar_shade_color; */
-}
-
-
-/*  */
-/* headerbar:backdrop { */
-/* background-color: @surface; */
-/* box-shadow: none; */
-/* } */
-/*  */
-/* headerbar .title, */
-/* headerbar .subtitle { */
-/* font-weight: 600; */
-/* } */
-/*  */
 /* ── Buttons — neon bean (matches quickshell SettingsButton) ─── */
 @keyframes neon-pulse {
-0%, 100% { box-shadow: 0 0 9px 1px alpha(@primary, 0.95), inset 0 0 4px alpha(@primary, 0.9); }
-50% { box-shadow: 0 0 4px 0 alpha(@primary, 0.45), inset 0 0 2px alpha(@primary, 0.45); }
+
+   0%,
+   100% {
+      box-shadow: 0 0 9px 1px alpha(@primary, 0.95), inset 0 0 4px alpha(@primary, 0.9);
+   }
+
+   50% {
+      box-shadow: 0 0 4px 0 alpha(@primary, 0.45), inset 0 0 2px alpha(@primary, 0.45);
+   }
 }
 
 /* idle buttons without a visible border take on their parent's background */
 button {
-background-color: transparent;
-background-image: none;
-color: @primary;
-border: 2px solid transparent;
-border-radius: 0;
-padding: 6px 16px;
-box-shadow: none;
-transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+   background-color: transparent;
+   background-image: none;
+   color: @primary;
+   border: 2px solid transparent;
+   border-radius: 0;
+   padding: 6px 16px;
+   box-shadow: none;
+   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
 }
 
 /* hover matches quickshell NeonMenuItem: container fill, neon border, pulsing glow */
 button:hover {
-background-color: @primary_container;
-border-color: @primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+   background-color: @primary_container;
+   border-color: @primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
 /* menu open: toggle buttons, menubutton/dropdown triggers while their popover is shown */
 button:checked,
 button:active,
-menubutton > button:checked,
-dropdown > button:checked {
-background-color: @primary;
-border-color: @primary;
-color: @on_primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+menubutton>button:checked,
+dropdown>button:checked {
+   background-color: @primary;
+   border-color: @primary;
+   color: @on_primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
 /* open state wins over hover, like the QML */
 button:checked:hover {
-background-color: @primary;
+   background-color: @primary;
 }
 
 button:disabled {
-color: alpha(@primary, 0.4);
-animation: none;
+   color: alpha(@primary, 0.4);
+   animation: none;
 }
 
 /* switches (incl. libadwaita switch rows) follow the button states: square,
    hover = container fill + neon border + pulse, on = primary fill + pulse.
    A faint idle border keeps the off track readable. */
 switch {
-background-color: transparent;
-background-image: none;
-color: @primary;
-border: 2px solid alpha(@primary, 0.4);
-border-radius: 0;
-padding: 2px;
-box-shadow: none;
-outline: none;
-transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+   background-color: transparent;
+   background-image: none;
+   color: @primary;
+   border: 2px solid alpha(@primary, 0.4);
+   border-radius: 0;
+   padding: 2px;
+   box-shadow: none;
+   outline: none;
+   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
 
 switch:hover {
-background-color: @primary_container;
-border-color: @primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+   background-color: @primary_container;
+   border-color: @primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
 switch:checked,
 switch:checked:hover {
-background-color: @primary;
-background-image: none;
-border-color: @primary;
-color: @on_primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+   background-color: @primary;
+   background-image: none;
+   border-color: @primary;
+   color: @on_primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
 switch:disabled {
-border-color: alpha(@primary, 0.2);
-animation: none;
+   border-color: alpha(@primary, 0.2);
+   animation: none;
 }
 
 /* the knob: a square block in the text color, so it flips to @on_primary when on */
-switch > slider,
-switch:hover > slider,
-switch:active > slider,
-switch:checked > slider {
-background-color: currentColor;
-border-radius: 0;
-box-shadow: none;
+switch>slider,
+switch:hover>slider,
+switch:active>slider,
+switch:checked>slider {
+   background-color: currentColor;
+   border-radius: 0;
+   box-shadow: none;
 }
 
 /* tabs (libadwaita tab bar + classic notebook) follow the button states:
    square, hover = container fill + neon border + pulse; the active tab is outlined, steady glow, bold */
 tabbar tab,
-notebook > header > tabs > tab {
-background-color: transparent;
-background-image: none;
-color: @primary;
-border: 2px solid transparent;
-border-radius: 0;
-box-shadow: none;
-outline: none;
-transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+notebook>header>tabs>tab {
+   background-color: transparent;
+   background-image: none;
+   color: @primary;
+   border: 2px solid transparent;
+   border-radius: 0;
+   box-shadow: none;
+   outline: none;
+   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
 
 /* the focus/drag wrapper around each libadwaita tab is rounded too */
-tabbar tabbox > tabboxchild {
-border-radius: 0;
+tabbar tabbox>tabboxchild {
+   border-radius: 0;
 }
 
 tabbar tab:hover,
-notebook > header > tabs > tab:hover {
-background-color: @primary_container;
-border-color: @primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+notebook>header>tabs>tab:hover {
+   background-color: @primary_container;
+   border-color: @primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
 /* active tab: transparent fill, neon border, steady (not pulsing) glow and a bold title */
 tabbar tab:selected,
 tabbar tab:selected:hover,
-notebook > header > tabs > tab:checked,
-notebook > header > tabs > tab:checked:hover {
-background-color: transparent;
-border-color: @primary;
-color: @primary;
-animation: none;
-box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+notebook>header>tabs>tab:checked,
+notebook>header>tabs>tab:checked:hover {
+   background-color: transparent;
+   border-color: @primary;
+   color: @primary;
+   animation: none;
+   box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
 }
 
 tabbar tab:selected label,
-notebook > header > tabs > tab:checked label {
-font-weight: bold;
+notebook>header>tabs>tab:checked label {
+   font-weight: bold;
 }
 
 /* Nautilus path bar: one surface block with a square, steady neon border */
 .nautilus-pathbar {
-background-color: @surface;
-border: 2px solid @primary;
-border-radius: 0;
-box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+   background-color: @surface;
+   border: 2px solid @primary;
+   border-radius: 0;
+   box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
 }
 
 /* buttons inside blend into the group; hover still lights them up */
 .nautilus-pathbar button {
-background-color: transparent;
-border-color: transparent;
+   background-color: transparent;
+   border-color: transparent;
 }
 
 .nautilus-pathbar button:hover {
-background-color: @primary_container;
+   background-color: @primary_container;
 }
 
 .nautilus-pathbar button:checked {
-background-color: @primary;
+   background-color: @primary;
 }
 
 /* pin the inner button height so the search toggle can match the bar exactly */
 .nautilus-pathbar button {
-min-height: 24px;
+   min-height: 24px;
 }
 
 /* Nautilus "Search Current Folder" toggle beside the path bar: square, steady neon,
    same outer height as the bar (measured: bar 50px, so 34px content + padding + border) */
-headerbar stack > button.toggle {
-border-color: @primary;
-min-height: 34px;
-box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+headerbar stack>button.toggle {
+   border-color: @primary;
+   min-height: 34px;
+   box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
 }
 
 /* the one idle-bordered button keeps a solid fill; scoped so hover/checked fills still win */
-headerbar stack > button.toggle:not(:hover):not(:checked):not(:active) {
-background-color: @surface;
+headerbar stack>button.toggle:not(:hover):not(:checked):not(:active) {
+   background-color: @surface;
 }
 
 /* Nautilus location entry (Ctrl+L): same neon block as the path bar */
-.nautilus-window headerbar stack > box.linked {
-background-color: @surface;
-border: 2px solid @primary;
-border-radius: 0;
-box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+.nautilus-window headerbar stack>box.linked {
+   background-color: @surface;
+   border: 2px solid @primary;
+   border-radius: 0;
+   box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
 }
 
 /* the entry fills the block; 46px = bar's 50px outer height minus the 2px top/bottom border */
-.nautilus-window headerbar stack > box.linked > entry {
-background-color: transparent;
-color: @primary;
-caret-color: @primary;
-border: none;
-border-radius: 0;
-box-shadow: none;
-outline: none;
-min-height: 46px;
-padding: 0 12px;
+.nautilus-window headerbar stack>box.linked>entry {
+   background-color: transparent;
+   color: @primary;
+   caret-color: @primary;
+   border: none;
+   border-radius: 0;
+   box-shadow: none;
+   outline: none;
+   min-height: 46px;
+   padding: 0 12px;
 }
 
-.nautilus-window headerbar stack > box.linked > entry selection {
-background-color: alpha(@primary, 0.3);
+.nautilus-window headerbar stack>box.linked>entry selection {
+   background-color: alpha(@primary, 0.3);
 }
 
 /* cancel button blends in like the path-bar buttons; hover keeps the neon hover */
-.nautilus-window headerbar stack > box.linked > button {
-background-color: transparent;
-border-color: transparent;
+.nautilus-window headerbar stack>box.linked>button {
+   background-color: transparent;
+   border-color: transparent;
 }
 
-.nautilus-window headerbar stack > box.linked > button:hover {
-background-color: @primary_container;
+.nautilus-window headerbar stack>box.linked>button:hover {
+   background-color: @primary_container;
 }
 
 /* Nautilus "Search everywhere" query editor: same neon block as the location entry */
 .nautilus-query-editor,
 .nautilus-query-editor:focus-within {
-background-color: @surface;
-color: @primary;
-caret-color: @primary;
-border: 2px solid @primary;
-border-radius: 0;
-box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
-outline: none;
-min-height: 46px;
-padding: 0 12px;
+   background-color: @surface;
+   color: @primary;
+   caret-color: @primary;
+   border: 2px solid @primary;
+   border-radius: 0;
+   box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+   outline: none;
+   min-height: 46px;
+   padding: 0 12px;
 }
 
 .nautilus-query-editor selection {
-background-color: alpha(@primary, 0.3);
+   background-color: alpha(@primary, 0.3);
 }
 
 /* filters button blends in like the path-bar buttons; hover and open keep the neon states */
-.nautilus-query-editor > menubutton > button {
-background-color: transparent;
-border-color: transparent;
+.nautilus-query-editor>menubutton>button {
+   background-color: transparent;
+   border-color: transparent;
 }
 
-.nautilus-query-editor > menubutton > button:hover {
-background-color: @primary_container;
+.nautilus-query-editor>menubutton>button:hover {
+   background-color: @primary_container;
 }
 
-.nautilus-query-editor > menubutton > button:checked {
-background-color: @primary;
+.nautilus-query-editor>menubutton>button:checked {
+   background-color: @primary;
 }
 
 /* window controls (minimize/maximize/close) sit directly on the header bar */
-windowcontrols > button {
-background-color: transparent;
-border-color: transparent;
+windowcontrols>button {
+   background-color: transparent;
+   border-color: transparent;
 }
 
 /* libadwaita draws a round tint behind each window-control icon */
-windowcontrols > button > image {
-border-radius: 0;
+windowcontrols>button>image {
+   border-radius: 0;
 }
 
 /* libadwaita tints the whole splitbutton container on hover; let the halves handle it */
@@ -289,627 +277,267 @@ splitbutton,
 splitbutton:hover,
 splitbutton:active,
 splitbutton:checked,
-splitbutton > separator {
-background: none;
-box-shadow: none;
+splitbutton>separator {
+   background: none;
+   box-shadow: none;
 }
 
-windowcontrols > button:hover {
-background-color: transparent;
-border-color: transparent;
-animation: none;
+windowcontrols>button:hover {
+   background-color: transparent;
+   border-color: transparent;
+   animation: none;
 }
-/*  */
-/* button:hover { */
-/* background-color: alpha(@on_surface, 0.08); */
-/* } */
-/*  */
-/* button:active { */
-/* background-color: alpha(@on_surface, 0.12); */
-/* } */
-/*  */
-/* button.suggested-action { */
-/* background-color: @primary; */
-/* color: @on_primary; */
-/* border-color: transparent; */
-/* } */
-/*  */
-/* button.suggested-action:hover { */
-/* background-color: shade(@primary, 1.06); */
-/* } */
-/*  */
-/* button.suggested-action:active { */
-/* background-color: shade(@primary, 0.94); */
-/* } */
-/*  */
-/* button.destructive-action { */
-/* background-color: @error; */
-/* color: @on_error; */
-/* border-color: transparent; */
-/* } */
-/*  */
-/* button.destructive-action:hover { */
-/* background-color: shade(@error, 1.06); */
-/* } */
-/*  */
-/* button.flat { */
-/* background-color: transparent; */
-/* border-color: transparent; */
-/* } */
-/*  */
-/* button.flat:hover { */
-/* background-color: alpha(@on_surface, 0.08); */
-/* } */
-/*  */
-/* button.flat:active { */
-/* background-color: alpha(@on_surface, 0.12); */
-/* } */
-/*  */
-/* ── Text entry ───────────────────────────────────────────────── */
-/* entry, */
-/* text { */
-/* background-color: @surface_variant; */
-/* color: @on_surface; */
-/* border: 1px solid @outline; */
-/* border-radius: 4px; */
-/* padding: 8px 12px; */
-/* caret-color: @primary; */
-/* } */
-/*  */
-/* entry:focus, */
-/* text:focus { */
-/* border-color: @primary; */
-/* box-shadow: 0 0 0 2px alpha(@primary, 0.30); */
-/* } */
-/*  */
+
 /* ── Sidebar — Nautilus places panel ──────────────────────────── */
 /* .sidebar, */
 /* placessidebar, */
 .nautilus-window .sidebar,
 .nautilus-window .sidebar-pane {
-background-color: @surface;
-/* color: @sidebar_fg_color; */
-/* border-right: 1px solid @sidebar_border_color; */
+   background-color: @surface;
+   /* color: @sidebar_fg_color; */
+   /* border-right: 1px solid @sidebar_border_color; */
 }
 
 /* sidebar rows match quickshell NeonMenuItem: square, transparent 1px border when idle */
-.nautilus-window .navigation-sidebar > row {
-background-color: @surface;
-color: @primary;
-border: 1px solid transparent;
-border-radius: 0;
-box-shadow: none;
-transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+.nautilus-window .navigation-sidebar>row {
+   background-color: @surface;
+   color: @primary;
+   border: 1px solid transparent;
+   border-radius: 0;
+   box-shadow: none;
+   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
 
-.nautilus-window .navigation-sidebar > row:hover {
-background-color: @primary_container;
-border-color: @primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+.nautilus-window .navigation-sidebar>row:hover {
+   background-color: @primary_container;
+   border-color: @primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
-.nautilus-window .navigation-sidebar > row:selected,
-.nautilus-window .navigation-sidebar > row:selected:hover {
-background-color: @primary;
-border-color: @primary;
-color: @on_primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+.nautilus-window .navigation-sidebar>row:selected,
+.nautilus-window .navigation-sidebar>row:selected:hover {
+   background-color: @primary;
+   border-color: @primary;
+   color: @on_primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
-.nautilus-window .navigation-sidebar > row:selected label {
-font-weight: bold;
+.nautilus-window .navigation-sidebar>row:selected label {
+   font-weight: bold;
 }
-/*  */
-/* .sidebar row, */
-/* placessidebar row { */
-/* border-radius: 8px; */
-/* margin: 1px 6px;
-padding: 2px 4px; */
-/* transition: background-color 100ms ease; */
-/* } */
-/*  */
-/* .sidebar row:hover, */
-/* placessidebar row:hover { */
-/* background-color: alpha(@on_surface, 0.08); */
-/* } */
-/*  */
-/* .sidebar row:selected, */
-/* placessidebar row:selected { */
-/* background-color: @secondary_container; */
-/* color: @on_secondary_container; */
-/* } */
-/*  */
-/* .sidebar row:selected:hover, */
-/* placessidebar row:selected:hover { */
-/* background-color: shade(@secondary_container, 1.06); */
-/* } */
-/*  */
-/* ── List / Grid views ────────────────────────────────────────── */
-/* listview, */
-/* columnview, */
-/* gridview { */
-/* background-color: @view_bg_color; */
-/* color: @view_fg_color; */
-/* } */
-/*  */
-/* listview row, */
-/* columnview row { */
-/* border-radius: 6px; */
-/* padding: 2px 6px; */
-/* transition: background-color 100ms ease; */
-/* } */
-/*  */
-/* listview row:hover, */
-/* columnview row:hover { */
-/* background-color: alpha(@on_surface, 0.08); */
-/* } */
-/*  */
-/* listview row:selected, */
-/* columnview row:selected { */
-/* background-color: @secondary_container; */
-/* color: @on_secondary_container; */
-/* } */
-/*  */
-/* gridview child { */
-/* border-radius: 12px; */
-/* padding: 6px; */
-/* transition: background-color 100ms ease; */
-/* } */
-/*  */
-/* gridview child:hover { */
-/* background-color: alpha(@on_surface, 0.08); */
-/* } */
-/*  */
-/* gridview child:selected { */
-/* background-color: @secondary_container; */
-/* color: @on_secondary_container; */
-/* } */
-/*  */
 
 /* grid items and list rows (Nautilus icon + list views) match quickshell NeonMenuItem */
-gridview > child,
-listview > row {
-color: @primary;
-border: 1px solid transparent;
-border-radius: 0;
-box-shadow: none;
-transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+gridview>child,
+listview>row {
+   color: @primary;
+   border: 1px solid transparent;
+   border-radius: 0;
+   box-shadow: none;
+   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
 
-gridview > child:hover,
-listview > row:hover {
-background-color: @primary_container;
-border-color: @primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+gridview>child:hover,
+listview>row:hover {
+   background-color: @primary_container;
+   border-color: @primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
-gridview > child:selected,
-gridview > child:selected:hover,
-listview > row:selected,
-listview > row:selected:hover {
-background-color: @primary;
-border-color: @primary;
-color: @on_primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+gridview>child:selected,
+gridview>child:selected:hover,
+listview>row:selected,
+listview>row:selected:hover {
+   background-color: @primary;
+   border-color: @primary;
+   color: @on_primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
-gridview > child:selected label,
-listview > row:selected label {
-font-weight: bold;
+gridview>child:selected label,
+listview>row:selected label {
+   font-weight: bold;
 }
 
 /* libadwaita boxed lists (settings-style cards): square steady-neon frame like popovers */
 list.boxed-list {
-background-color: @surface;
-border: 1px solid @primary;
-border-radius: 0;
-box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+   background-color: @surface;
+   border: 1px solid @primary;
+   border-radius: 0;
+   box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
 }
 
 list.boxed-list-separate {
-background: none;
-border: none;
-box-shadow: none;
+   background: none;
+   border: none;
+   box-shadow: none;
 }
 
 /* boxed-list rows match quickshell NeonMenuItem */
-list.boxed-list > row,
-list.boxed-list-separate > row {
-background-color: @surface;
-background-image: none;
-color: @primary;
-border: 1px solid transparent;
-border-radius: 0;
-box-shadow: none;
-transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+list.boxed-list>row,
+list.boxed-list-separate>row {
+   background-color: @surface;
+   background-image: none;
+   color: @primary;
+   border: 1px solid transparent;
+   border-radius: 0;
+   box-shadow: none;
+   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
 
-list.boxed-list > row.activatable:hover,
-list.boxed-list-separate > row.activatable:hover {
-background-color: @primary_container;
-background-image: none;
-border-color: @primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+list.boxed-list>row.activatable:hover,
+list.boxed-list-separate>row.activatable:hover {
+   background-color: @primary_container;
+   background-image: none;
+   border-color: @primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
-list.boxed-list > row:selected,
-list.boxed-list > row:selected:hover,
-list.boxed-list-separate > row:selected,
-list.boxed-list-separate > row:selected:hover {
-background-color: @primary;
-background-image: none;
-border-color: @primary;
-color: @on_primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+list.boxed-list>row:selected,
+list.boxed-list>row:selected:hover,
+list.boxed-list-separate>row:selected,
+list.boxed-list-separate>row:selected:hover {
+   background-color: @primary;
+   background-image: none;
+   border-color: @primary;
+   color: @on_primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
-list.boxed-list > row:selected label,
-list.boxed-list-separate > row:selected label {
-font-weight: bold;
+list.boxed-list>row:selected label,
+list.boxed-list-separate>row:selected label {
+   font-weight: bold;
 }
 
 /* expander rows: the outer row is just a wrapper; header and nested rows carry the NeonMenuItem states */
 row.expander {
-background: none;
-border: none;
-box-shadow: none;
-animation: none;
+   background: none;
+   border: none;
+   box-shadow: none;
+   animation: none;
 }
 
 row.expander row.header,
-row.expander list.nested > row {
-background-color: @surface;
-background-image: none;
-color: @primary;
-border: 1px solid transparent;
-border-radius: 0;
-box-shadow: none;
-transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+row.expander list.nested>row {
+   background-color: @surface;
+   background-image: none;
+   color: @primary;
+   border: 1px solid transparent;
+   border-radius: 0;
+   box-shadow: none;
+   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
 
 row.expander list.nested {
-background-color: @surface;
+   background-color: @surface;
 }
 
 row.expander row.header.activatable:hover,
-row.expander list.nested > row.activatable:hover {
-background-color: @primary_container;
-background-image: none;
-border-color: @primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+row.expander list.nested>row.activatable:hover {
+   background-color: @primary_container;
+   background-image: none;
+   border-color: @primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
 /* expanded header = "open" state, like a menu button with its popover shown */
 row.expander:checked row.header,
 row.expander:checked row.header:hover,
-row.expander list.nested > row:selected {
-background-color: @primary;
-background-image: none;
-border-color: @primary;
-color: @on_primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+row.expander list.nested>row:selected {
+   background-color: @primary;
+   background-image: none;
+   border-color: @primary;
+   color: @on_primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
 row.expander:checked row.header image.expander-row-arrow:not(:disabled) {
-color: @on_primary;
+   color: @on_primary;
 }
 
 row.expander:checked row.header label.title,
-row.expander list.nested > row:selected label {
-font-weight: bold;
+row.expander list.nested>row:selected label {
+   font-weight: bold;
 }
-/* ── Popover ──────────────────────────────────────────────────── */
-/* popover>contents { */
-/* background-color: @popover_bg_color; */
-/* color: @popover_fg_color; */
-/* border: 1px solid @outline_variant; */
-/* border-radius: 12px; */
-/* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.50); */
-/* } */
-/*  */
-/* popover modelbutton { */
-/* border-radius: 6px; */
-/* padding: 6px 12px; */
-/* } */
-/*  */
-/* popover modelbutton:hover { */
-/* background-color: alpha(@on_surface, 0.08); */
-/* } */
-/*  */
 
 /* popovers match quickshell ShutdownButton menu: square NeonRectangle, steady glow */
-popover > contents {
-background-color: @surface;
-color: @primary;
-border: 1px solid @primary;
-border-radius: 0;
-padding: 6px;
-box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+popover>contents {
+   background-color: @surface;
+   color: @primary;
+   border: 1px solid @primary;
+   border-radius: 0;
+   padding: 6px;
+   box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
 }
 
-popover > arrow {
-background-color: @surface;
-border: 1px solid @primary;
+popover>arrow {
+   background-color: @surface;
+   border: 1px solid @primary;
 }
 
 /* libadwaita toasts (e.g. "File deleted — Undo"): same square steady-neon box as popovers */
 toast {
-background: @surface;
-color: @primary;
-border: 1px solid @primary;
-border-radius: 0;
-box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+   background: @surface;
+   color: @primary;
+   border: 1px solid @primary;
+   border-radius: 0;
+   box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
 }
 
 /* libadwaita dialog sheets (floating dialogs, bottom sheets): same square steady-neon box as popovers */
 .sheet,
-floating-sheet > sheet,
-bottom-sheet > sheet {
-background-color: @surface;
-color: @primary;
-border: 1px solid @primary;
-border-radius: 0;
-outline: none;
-box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+floating-sheet>sheet,
+bottom-sheet>sheet {
+   background-color: @surface;
+   color: @primary;
+   border: 1px solid @primary;
+   border-radius: 0;
+   outline: none;
+   box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
 }
 
 /* bottom sheets round their outline and inner layers separately */
-bottom-sheet > sheet > outline,
-bottom-sheet > sheet > stack > widget,
-bottom-sheet > sheet > stack > button,
-bottom-sheet > sheet > stack > button > widget {
-border-radius: 0;
-box-shadow: none;
+bottom-sheet>sheet>outline,
+bottom-sheet>sheet>stack>widget,
+bottom-sheet>sheet>stack>button,
+bottom-sheet>sheet>stack>button>widget {
+   border-radius: 0;
+   box-shadow: none;
 }
 
 /* menu rows match NeonMenuItem: 32px, square, 6px apart */
 popover.menu modelbutton {
-min-height: 32px;
-margin: 3px 0;
-padding: 0 6px;
-color: @primary;
-background-color: @surface;
-border: 1px solid transparent;
-border-radius: 0;
-box-shadow: none;
-transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+   min-height: 32px;
+   margin: 3px 0;
+   padding: 0 6px;
+   color: @primary;
+   background-color: @surface;
+   border: 1px solid transparent;
+   border-radius: 0;
+   box-shadow: none;
+   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
 
 /* GTK marks the pointer/keyboard-highlighted row :selected as well as :hover */
 popover.menu modelbutton:hover,
 popover.menu modelbutton:selected {
-background-color: @primary_container;
-border-color: @primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+   background-color: @primary_container;
+   border-color: @primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
 popover.menu modelbutton:active {
-background-color: @primary;
-border-color: @primary;
-color: @on_primary;
-animation: neon-pulse 1600ms ease-in-out infinite;
+   background-color: @primary;
+   border-color: @primary;
+   color: @on_primary;
+   animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
 popover.menu modelbutton:disabled {
-color: alpha(@primary, 0.4);
-animation: none;
+   color: alpha(@primary, 0.4);
+   animation: none;
 }
 
 popover.menu separator {
-background-color: alpha(@primary, 0.3);
-margin: 6px 0;
+   background-color: alpha(@primary, 0.3);
+   margin: 6px 0;
 }
-
-/* ── Context menus ────────────────────────────────────────────── */
-/* menu { */
-/* background-color: @popover_bg_color; */
-/* color: @popover_fg_color; */
-/* border: 1px solid @outline_variant; */
-/* border-radius: 12px; */
-/* padding: 6px; */
-/* } */
-/*  */
-/* menuitem { */
-/* border-radius: 6px; */
-/* padding: 6px 12px; */
-/* } */
-/*  */
-/* menuitem:hover { */
-/* background-color: @secondary_container; */
-/* color: @on_secondary_container; */
-/* } */
-/*  */
-/* separator { */
-/* background-color: @outline_variant; */
-/* min-height: 1px; */
-/* margin: 4px 0; */
-/* } */
-/*  */
-/* ── Scrollbar ────────────────────────────────────────────────── */
-/* scrollbar { */
-/* background-color: transparent; */
-/* } */
-/*  */
-/* scrollbar trough { */
-/* background-color: transparent; */
-/* } */
-/*  */
-/* scrollbar slider { */
-/* background-color: alpha(@outline, 0.50); */
-/* border-radius: 9999px; */
-/* min-width: 6px; */
-/* min-height: 6px; */
-/* margin: 2px; */
-/* transition: background-color 200ms ease, min-width 200ms ease, min-height 200ms ease; */
-/* } */
-/*  */
-/* scrollbar slider:hover { */
-/* background-color: @primary; */
-/* min-width: 8px; */
-/* min-height: 8px; */
-/* } */
-/*  */
-/* scrollbar slider:active { */
-/* background-color: @primary_container; */
-/* } */
-/*  */
-/* ── Switch ───────────────────────────────────────────────────── */
-/* switch { */
-/* background-color: @surface_variant; */
-/* border-radius: 9999px; */
-/* border: 2px solid @outline; */
-/* transition: background-color 200ms ease; */
-/*  */
-/* ── Check / Radio ────────────────────────────────────────────── */
-/* checkbutton check { */
-/* background-color: transparent; */
-/* border: 2px solid @outline; */
-/* border-radius: 3px; */
-/* transition: background-color 150ms ease; */
-/* } */
-/*  */
-/* checkbutton check:checked { */
-/* background-color: @primary; */
-/* border-color: @primary; */
-/* color: @on_primary; */
-/* } */
-/*  */
-/* radiobutton radio { */
-/* background-color: transparent; */
-/* border: 2px solid @outline; */
-/* border-radius: 9999px; */
-/* transition: background-color 150ms ease; */
-/* } */
-/*  */
-/* radiobutton radio:checked { */
-/* border-color: @primary; */
-/* color: @primary; */
-/* } */
-/*  */
-/* ── Notebook / Tabs ──────────────────────────────────────────── */
-/* notebook>header { */
-/* background-color: @surface; */
-/* border-bottom: 1px solid @outline_variant; */
-/* } */
-/*  */
-/* notebook>header tabs tab { */
-/* padding: 8px 16px; */
-/* color: @on_surface_variant; */
-/* border-radius: 6px 6px 0 0; */
-/* transition: color 150ms ease; */
-/* } */
-/*  */
-/* notebook>header tabs tab:checked { */
-/* color: @primary; */
-/* box-shadow: inset 0 -2px 0 @primary; */
-/* } */
-/*  */
-/* ── Search ───────────────────────────────────────────────────── */
-/* searchbar { */
-/* background-color: @surface; */
-/* border-bottom: 1px solid @outline_variant; */
-/* } */
-/*  */
-/* searchentry { */
-/* background-color: @surface_variant; */
-/* border-radius: 9999px; */
-/* border: none; */
-/* padding: 6px 14px; */
-/* caret-color: @primary; */
-/* } */
-/*  */
-/* searchentry:focus { */
-/* box-shadow: 0 0 0 2px alpha(@primary, 0.40); */
-/* } */
-/*  */
-/* ── Card ─────────────────────────────────────────────────────── */
-/* .card { */
-/* background-color: @card_bg_color; */
-/* color: @card_fg_color; */
-/* border-radius: 12px; */
-/* box-shadow: 0 1px 3px @card_shade_color; */
-/* } */
-/*  */
-/* ── Tooltip ──────────────────────────────────────────────────── */
-/* tooltip { */
-/* background-color: @surface_variant; */
-/* color: @on_surface_variant; */
-/* border-radius: 8px; */
-/* padding: 6px 10px; */
-/* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.40); */
-/* } */
-/*  */
-/* ── Info bar ─────────────────────────────────────────────────── */
-/* infobar { */
-/* background-color: @secondary_container; */
-/* color: @on_secondary_container; */
-/* } */
-/*  */
-/* infobar.warning { */
-/* background-color: @primary_container; */
-/* color: @on_primary_container; */
-/* } */
-/*  */
-/* infobar.error { */
-/* background-color: @on_error; */
-/* color: @error; */
-/* } */
-/*  */
-/* ── Progress bar ─────────────────────────────────────────────── */
-/* progressbar trough { */
-/* background-color: @surface_variant; */
-/* border-radius: 9999px; */
-/* } */
-/*  */
-/* progressbar progress { */
-/* background-color: @primary; */
-/* border-radius: 9999px; */
-/* } */
-/*  */
-/* ── Spinner ──────────────────────────────────────────────────── */
-/* spinner { */
-/* color: @primary; */
-/* } */
-/*  */
-/* ── Global selection ─────────────────────────────────────────── */
-/* *:selected { */
-/* background-color: alpha(@primary, 0.25); */
-/* color: @on_surface; */
-/* } */
-/*  */
-/* ── Nautilus specifics ───────────────────────────────────────── */
-/* .nautilus-canvas-item:selected { */
-/* background-color: @secondary_container; */
-/* color: @on_secondary_container; */
-/* border-radius: 8px; */
-/* } */
-/*  */
-/* .path-bar button { */
-/* border-radius: 6px; */
-/* border: none; */
-/* } */
-/*  */
-/* .path-bar button:hover { */
-/* background-color: alpha(@on_surface, 0.10); */
-/* } */
-/*  */
-/* .path-bar button:checked { */
-/* background-color: alpha(@primary, 0.15); */
-/* color: @primary; */
-/* } */
-/* } */
-/*  */
-/* switch:checked { */
-/* background-color: @primary; */
-/* border-color: @primary; */
-/* } */
-/*  */
-/* switch slider { */
-/* background-color: @outline; */
-/* border-radius: 9999px; */
-/* } */
-/*  */
-/* switch:checked slider { */
-/* background-color: @on_primary; */
-/* } */
-/*  */
