@@ -38,11 +38,12 @@ box-shadow: 0 1px 3px @headerbar_shade_color; */
 50% { box-shadow: 0 0 4px 0 alpha(@primary, 0.45), inset 0 0 2px alpha(@primary, 0.45); }
 }
 
+/* idle buttons without a visible border take on their parent's background */
 button {
-background-color: @surface;
+background-color: transparent;
 background-image: none;
 color: @primary;
-border: 2px solid @surface;
+border: 2px solid transparent;
 border-radius: 0;
 padding: 6px 16px;
 box-shadow: none;
@@ -110,6 +111,11 @@ headerbar stack > button.toggle {
 border-color: @primary;
 min-height: 34px;
 box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+}
+
+/* the one idle-bordered button keeps a solid fill; scoped so hover/checked fills still win */
+headerbar stack > button.toggle:not(:hover):not(:checked):not(:active) {
+background-color: @surface;
 }
 
 /* Nautilus location entry (Ctrl+L): same neon block as the path bar */
@@ -372,8 +378,9 @@ padding: 2px 4px; */
 /* } */
 /*  */
 
-/* grid items (Nautilus icon view) match quickshell NeonMenuItem */
-gridview > child {
+/* grid items and list rows (Nautilus icon + list views) match quickshell NeonMenuItem */
+gridview > child,
+listview > row {
 color: @primary;
 border: 1px solid transparent;
 border-radius: 0;
@@ -381,21 +388,126 @@ box-shadow: none;
 transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
 
-gridview > child:hover {
+gridview > child:hover,
+listview > row:hover {
 background-color: @primary_container;
 border-color: @primary;
 animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
 gridview > child:selected,
-gridview > child:selected:hover {
+gridview > child:selected:hover,
+listview > row:selected,
+listview > row:selected:hover {
 background-color: @primary;
 border-color: @primary;
 color: @on_primary;
 animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
-gridview > child:selected label {
+gridview > child:selected label,
+listview > row:selected label {
+font-weight: bold;
+}
+
+/* libadwaita boxed lists (settings-style cards): square steady-neon frame like popovers */
+list.boxed-list {
+background-color: @surface;
+border: 1px solid @primary;
+border-radius: 0;
+box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+}
+
+list.boxed-list-separate {
+background: none;
+border: none;
+box-shadow: none;
+}
+
+/* boxed-list rows match quickshell NeonMenuItem */
+list.boxed-list > row,
+list.boxed-list-separate > row {
+background-color: @surface;
+background-image: none;
+color: @primary;
+border: 1px solid transparent;
+border-radius: 0;
+box-shadow: none;
+transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+list.boxed-list > row.activatable:hover,
+list.boxed-list-separate > row.activatable:hover {
+background-color: @primary_container;
+background-image: none;
+border-color: @primary;
+animation: neon-pulse 1600ms ease-in-out infinite;
+}
+
+list.boxed-list > row:selected,
+list.boxed-list > row:selected:hover,
+list.boxed-list-separate > row:selected,
+list.boxed-list-separate > row:selected:hover {
+background-color: @primary;
+background-image: none;
+border-color: @primary;
+color: @on_primary;
+animation: neon-pulse 1600ms ease-in-out infinite;
+}
+
+list.boxed-list > row:selected label,
+list.boxed-list-separate > row:selected label {
+font-weight: bold;
+}
+
+/* expander rows: the outer row is just a wrapper; header and nested rows carry the NeonMenuItem states */
+row.expander {
+background: none;
+border: none;
+box-shadow: none;
+animation: none;
+}
+
+row.expander row.header,
+row.expander list.nested > row {
+background-color: @surface;
+background-image: none;
+color: @primary;
+border: 1px solid transparent;
+border-radius: 0;
+box-shadow: none;
+transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+row.expander list.nested {
+background-color: @surface;
+}
+
+row.expander row.header.activatable:hover,
+row.expander list.nested > row.activatable:hover {
+background-color: @primary_container;
+background-image: none;
+border-color: @primary;
+animation: neon-pulse 1600ms ease-in-out infinite;
+}
+
+/* expanded header = "open" state, like a menu button with its popover shown */
+row.expander:checked row.header,
+row.expander:checked row.header:hover,
+row.expander list.nested > row:selected {
+background-color: @primary;
+background-image: none;
+border-color: @primary;
+color: @on_primary;
+animation: neon-pulse 1600ms ease-in-out infinite;
+}
+
+row.expander:checked row.header image.expander-row-arrow:not(:disabled) {
+color: @on_primary;
+}
+
+row.expander:checked row.header label.title,
+row.expander list.nested > row:selected label {
 font-weight: bold;
 }
 /* ── Popover ──────────────────────────────────────────────────── */
@@ -430,6 +542,36 @@ box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
 popover > arrow {
 background-color: @surface;
 border: 1px solid @primary;
+}
+
+/* libadwaita toasts (e.g. "File deleted — Undo"): same square steady-neon box as popovers */
+toast {
+background: @surface;
+color: @primary;
+border: 1px solid @primary;
+border-radius: 0;
+box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+}
+
+/* libadwaita dialog sheets (floating dialogs, bottom sheets): same square steady-neon box as popovers */
+.sheet,
+floating-sheet > sheet,
+bottom-sheet > sheet {
+background-color: @surface;
+color: @primary;
+border: 1px solid @primary;
+border-radius: 0;
+outline: none;
+box-shadow: 0 0 6px alpha(@primary, 0.55), inset 0 0 3px alpha(@primary, 0.45);
+}
+
+/* bottom sheets round their outline and inner layers separately */
+bottom-sheet > sheet > outline,
+bottom-sheet > sheet > stack > widget,
+bottom-sheet > sheet > stack > button,
+bottom-sheet > sheet > stack > button > widget {
+border-radius: 0;
+box-shadow: none;
 }
 
 /* menu rows match NeonMenuItem: 32px, square, 6px apart */
