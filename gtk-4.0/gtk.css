@@ -124,7 +124,7 @@ box-shadow: none;
 }
 
 /* tabs (libadwaita tab bar + classic notebook) follow the button states:
-   square, hover = container fill + neon border + pulse; the active tab keeps that look, steady glow, bold */
+   square, hover = container fill + neon border + pulse; the active tab is outlined, steady glow, bold */
 tabbar tab,
 notebook > header > tabs > tab {
 background-color: transparent;
@@ -149,12 +149,12 @@ border-color: @primary;
 animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
-/* active tab = the button hover look with a steady (not pulsing) glow and a bold title */
+/* active tab: transparent fill, neon border, steady (not pulsing) glow and a bold title */
 tabbar tab:selected,
 tabbar tab:selected:hover,
 notebook > header > tabs > tab:checked,
 notebook > header > tabs > tab:checked:hover {
-background-color: @primary_container;
+background-color: transparent;
 border-color: @primary;
 color: @primary;
 animation: none;
