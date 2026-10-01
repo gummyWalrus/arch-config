@@ -23,7 +23,7 @@ Here are ressources that got me started on that config and inspired me to create
 ## Project TODOS
 
 * Proper GTK theming so unthemed windows stop popping right in me face TwT
-* Add a system monitor
+* Add notification client
 * Add a settings "application"
       0. Audio output picker (Between HDMI, Bluetooth and shit...)
       1. Bluetooth
@@ -32,14 +32,15 @@ Here are ressources that got me started on that config and inspired me to create
       4. qs.config preferences
       5. Proper external services management ? (Calendar, mails ?, Google Drive eeeeeewwww among others)
       5. About page
-* Add notification client
-* Add a player controller (music, browser videos) and volume mixer
-* Add a wallpaper picker
-* Add an emoji picker
 * Remove unused config files
+* Add a system monitor
+* Add a player controller (music, browser videos) and volume mixer
+* Add an emoji picker
 * Proper lockscreen via hyprlock or quickshell
+* Loading logo/throbber/animation after unlock
+* Add a wallpaper picker
+* Image viewer when opening images from nautilus
 * Add calendar client when clicked on date (through thunderbird or is there an easier way ?)
-* Fix hibernate mode (Is kind of device specific so... Work it out yourself)
 * Add system tray client (I'm not much of a systray guy, so, not happening soon)
 
 # 1. Dependencies
@@ -55,15 +56,18 @@ Tools used to allow the full display and interactivity of the desktop environmen
 * hypridle : Idle deamon to automatically lock the session
 * hyprlock : Lockscreen/Screensaver from hypr community
 * quickshell : QT/QML utility to build custom panels and menus to build your own linux shell 
-* wofi : Wayland version of rofi, allows to display basic menus and panel from a simple cmd
 * sddm : Display manager that launches Hyprland and provides login security, replacing the classic tty login
-* gtk (2, 3 & 4) : Not sure if you need all of them, but you might 
+* matugen : Generates a Material You palette from the wallpaper and writes it into every template (hyprland, hyprlock, kitty, GTK 3 & 4, quickshell, sddm), the actual theming engine of this whole thing
+* jq : JSON cli, used by the matugen hyprpaper hook to list the monitors so the wallpaper changes on every screen
+* gtk3 : GTK 3 toolkit, still used by firefox, thunderbird, gimp and the GTK file chooser portal, themed by `~/.config/gtk-3.0/`
+* gtk4 + libadwaita : GTK 4 toolkit and the GNOME style library nautilus is built on, themed by `~/.config/gtk-4.0/`
+* adw-gtk-theme : GTK 3 port of the libadwaita look, reads matugen's libadwaita color names so GTK 3 apps get the wallpaper colors too
 * nautilus : GTK-based file explorer, used in GNOME
 * xorg-xwayland : Compatibilty layer to allows x11 applications to run or Wayland 
 
-### TODOS
+> GTK 3 apps need to be pointed at the theme once : `gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark`
 
-* Migrate dmenus/wofi menus to quickshell
+> To compare between bare nautilus and themed, you can use `XDG_CONFIG_HOME=$(mktemp -d) dbus-run-session nautilus` to open a bare, unthemed nautilus window. Same trick for GTK 3 apps, e.g. `XDG_CONFIG_HOME=$(mktemp -d) nwg-look`
 
 # SDDM Themes
 

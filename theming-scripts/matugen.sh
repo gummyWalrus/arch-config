@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Flips GTK's color-scheme preference AND regenerates all matugen templates
-# in the matching mode, so GTK apps and your Hyprland/Waybar/Wofi colors
+# in the matching mode, so GTK apps and your Hyprland colors
 # switch together. Run with no arguments to toggle, or pass "dark"/"light"
 # to force a specific mode.
 
@@ -43,6 +43,6 @@ fi
 
 echo "$MODE" > "$STATE_FILE"
 
-matugen image "$WALLPAPER" -m "$MODE"
+matugen image "$WALLPAPER" -m "$MODE" --source-color-index 0
 
 echo "Theme switched to $MODE"

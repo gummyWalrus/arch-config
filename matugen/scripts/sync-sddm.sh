@@ -4,7 +4,6 @@
 # SDDM runs as root, before any user session starts, and reads its theme
 # from /usr/share/sddm/themes/<theme>/theme.conf — a system path your user
 # can't write to. There is no "live" way to theme SDDM the way Waybar or
-# Wofi reload at runtime; the best you can do is keep the *installed* theme
 # file in sync with your latest palette, which is what this script does.
 #
 # Prerequisites (one-time):

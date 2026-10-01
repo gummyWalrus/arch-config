@@ -35,7 +35,6 @@ local colors      = require("colors")
 -- Set programs that you use
 local terminal    = "kitty"
 local fileManager = "nautilus"
-local menu        = "wofi"
 local browser	  = "app.zen_browser.zen"
 
 -------------------
@@ -51,8 +50,8 @@ hl.on("hyprland.start", function()
     -- hypridle, hyprpaper and gpg-agent run as systemd user units, see "Required services" in ~/.config/README.md
 
     -- To enable clipboard history for text and image
-    hl.exec_cmd("uwsm app -- wl-paste --type text --watch cliphist store")
-    hl.exec_cmd("uwsm app -- wl-paste --type image --watch cliphist store")
+    hl.exec_cmd("uwsm app -- wl-paste --type text  --watch cliphist -max-items 500 -max-item-size 20MiB store")
+    hl.exec_cmd("uwsm app -- wl-paste --type image --watch cliphist -max-items 500 -max-item-size 20MiB store")
 
     hl.exec_cmd("uwsm app -- quickshell -c lanicOS")
 
@@ -117,7 +116,7 @@ hl.config({
     },
 
     decoration = {
-        rounding         = 10,
+        rounding         = 1,
         rounding_power   = 2,
 
         -- Change transparency of focused and unfocused windows
@@ -261,7 +260,7 @@ local closeWindowBind = hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close()
 hl.bind(mainMod .. " + SHIFT + M",
     hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
--- hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.global("quickshell:launcher"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
@@ -358,6 +357,14 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
+})
+
+-- Browser always opens in workspace 2
+hl.window_rule({
+    name  = "Open browser in ws 2",
+    match = { class = browser },
+
+    workspace = "2",
 })
 
 

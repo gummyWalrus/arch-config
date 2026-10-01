@@ -12,14 +12,7 @@ hl.bind("SHIFT + Print", hl.dsp.exec_cmd('grim -g "$(slurp)" - | swappy -f -'))
 hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" -  | wl-copy'))
 
 --- Clipboard history
-hl.bind(mainMod .. "+ V",
-    hl.dsp.exec_cmd(
-        'cliphist list | wofi --dmenu | cliphist decode | wl-copy'))
-
-
---- Reload Waybar
-local reload_waybar = "pkill waybar; waybar &"
-hl.bind(mainMod .. "+ R", hl.dsp.exec_cmd(reload_waybar))
+hl.bind(mainMod .. "+ V", hl.dsp.global("quickshell:clipboard_history"))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),

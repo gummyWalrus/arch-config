@@ -298,9 +298,20 @@ windowcontrols>button:hover {
    /* border-right: 1px solid @sidebar_border_color; */
 }
 
-/* sidebar rows match quickshell NeonMenuItem: square, transparent 1px border when idle */
-.nautilus-window .navigation-sidebar>row {
-   background-color: @surface;
+/* navigation sidebars (any app, not only Nautilus) match quickshell NeonMenuItem.
+   The list itself stays see-through so it sits on the sidebar pane */
+.navigation-sidebar {
+   background-color: transparent;
+   color: @primary;
+}
+
+/* rows (list), children (grid) and flowbox children: square, transparent fill
+   and 1px border when idle so they take on the sidebar's background */
+.navigation-sidebar row,
+.navigation-sidebar child,
+.navigation-sidebar flowboxchild {
+   background-color: transparent;
+   background-image: none;
    color: @primary;
    border: 1px solid transparent;
    border-radius: 0;
@@ -308,21 +319,30 @@ windowcontrols>button:hover {
    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
 
-.nautilus-window .navigation-sidebar>row:hover {
+/* hover only on clickable items, like libadwaita */
+.navigation-sidebar row.activatable:hover,
+.navigation-sidebar child.activatable:hover,
+.navigation-sidebar flowboxchild:hover {
    background-color: @primary_container;
    border-color: @primary;
    animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
-.nautilus-window .navigation-sidebar>row:selected,
-.nautilus-window .navigation-sidebar>row:selected:hover {
+.navigation-sidebar row:selected,
+.navigation-sidebar row:selected:hover,
+.navigation-sidebar child:selected,
+.navigation-sidebar child:selected:hover,
+.navigation-sidebar flowboxchild:selected,
+.navigation-sidebar flowboxchild:selected:hover {
    background-color: @primary;
    border-color: @primary;
    color: @on_primary;
    animation: neon-pulse 1600ms ease-in-out infinite;
 }
 
-.nautilus-window .navigation-sidebar>row:selected label {
+.navigation-sidebar row:selected label,
+.navigation-sidebar child:selected label,
+.navigation-sidebar flowboxchild:selected label {
    font-weight: bold;
 }
 
