@@ -37,9 +37,9 @@ Here are ressources that got me started on that config and inspired me to create
 * Add a player controller (music, browser videos) and volume mixer
 * Add an emoji picker
 * Proper lockscreen via hyprlock or quickshell
+* Image viewer when opening images from nautilus
 * Loading logo/throbber/animation after unlock
 * Add a wallpaper picker
-* Image viewer when opening images from nautilus
 * Add calendar client when clicked on date (through thunderbird or is there an easier way ?)
 * Add system tray client (I'm not much of a systray guy, so, not happening soon)
 
@@ -66,6 +66,8 @@ Tools used to allow the full display and interactivity of the desktop environmen
 * xorg-xwayland : Compatibilty layer to allows x11 applications to run or Wayland 
 
 > GTK 3 apps need to be pointed at the theme once : `gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark`
+>
+> GTK 3 apps running under XWayland (e.g. pinentry-gtk) can't read gsettings and fall back to light Adwaita, `~/.config/gtk-3.0/settings.ini` sets `gtk-theme-name=adw-gtk3-dark` for them
 
 > To compare between bare nautilus and themed, you can use `XDG_CONFIG_HOME=$(mktemp -d) dbus-run-session nautilus` to open a bare, unthemed nautilus window. Same trick for GTK 3 apps, e.g. `XDG_CONFIG_HOME=$(mktemp -d) nwg-look`
 

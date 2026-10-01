@@ -111,6 +111,26 @@ switch:checked>slider {
    box-shadow: none;
 }
 
+/* text inputs match the quickshell Launcher search field: surface box, 1px
+   primary_container border with its steady glow, square, primary text/caret */
+entry,
+entry:focus,
+entry:focus-within {
+   background-color: @surface;
+   background-image: none;
+   color: @primary;
+   caret-color: @primary;
+   border: 1px solid @primary_container;
+   border-radius: 0;
+   outline: none;
+   box-shadow: 0 0 6px alpha(@primary_container, 0.55), inset 0 0 3px alpha(@primary_container, 0.45);
+}
+
+entry selection {
+   background-color: @primary;
+   color: @on_primary;
+}
+
 /* tabs (libadwaita tab bar + classic notebook) follow the button states:
    square, hover = container fill + neon border + pulse; the active tab is outlined, steady glow, bold */
 tabbar tab,
@@ -216,7 +236,8 @@ headerbar stack>button.toggle:not(:hover):not(:checked):not(:active) {
 }
 
 .nautilus-window headerbar stack>box.linked>entry selection {
-   background-color: alpha(@primary, 0.3);
+   background-color: @primary;
+   color: @on_primary;
 }
 
 /* cancel button blends in like the path-bar buttons; hover keeps the neon hover */
@@ -244,7 +265,8 @@ headerbar stack>button.toggle:not(:hover):not(:checked):not(:active) {
 }
 
 .nautilus-query-editor selection {
-   background-color: alpha(@primary, 0.3);
+   background-color: @primary;
+   color: @on_primary;
 }
 
 /* filters button blends in like the path-bar buttons; hover and open keep the neon states */

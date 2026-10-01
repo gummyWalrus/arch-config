@@ -119,6 +119,26 @@ switch:checked slider {
    box-shadow: none;
 }
 
+/* text inputs match the quickshell Launcher search field: surface box, 1px
+   primary_container border with its steady glow, square, primary text/caret */
+entry,
+entry:focus,
+entry:focus-within {
+   background-color: @surface;
+   background-image: none;
+   color: @primary;
+   caret-color: @primary;
+   border: 1px solid @primary_container;
+   border-radius: 0;
+   outline: none;
+   box-shadow: 0 0 6px alpha(@primary_container, 0.55), inset 0 0 3px alpha(@primary_container, 0.45);
+}
+
+entry selection {
+   background-color: @primary;
+   color: @on_primary;
+}
+
 /* notebook tabs follow the button states:
    square, hover = container fill + neon border + pulse; the active tab is outlined, steady glow, bold */
 notebook>header>tabs>tab {
@@ -299,6 +319,7 @@ popover.background {
 /* GTK3 message dialogs (Electron/VSCodium confirmations, etc.): popup background,
    square corners, primary text. No neon border, Hyprland draws the window border */
 messagedialog.csd.background,
+messagedialog.background,
 messagedialog .titlebar,
 messagedialog .titlebar:backdrop {
    background-color: @surface;
@@ -351,6 +372,16 @@ tooltip.csd decoration,
 .tiled-bottom decoration,
 .tiled-left decoration,
 window.rounded decoration {
+   box-shadow: none;
+}
+
+/* under X11/XWayland, adw-gtk3 draws a solid frame (padding, border, inset shadow)
+   around .solid-csd windows instead of a shadow; flatten it too */
+.solid-csd decoration,
+.solid-csd decoration:backdrop {
+   background: none;
+   border: none;
+   padding: 0;
    box-shadow: none;
 }
 
