@@ -9,6 +9,8 @@ LanicOS <3 uses `hyprland` and `quickshell` to provide some kind of a Wayland ba
 
 I have centralized every config file here, even the ones located outside of the `.config` folder, the symlinks required to make it work are listed in the `README.md` and a helper `links.sh` file is provided to create them.
 
+The Hyprland quote at the bottom of the wallaper / desktop is kept because I find it funny. Just uncomment the line in the "MISC" section of `hypr/hyprland.lua` to remove it
+
 > Currently a lot of stuff is being migrated to quickshell, hoping to simplify as much as possible
 
 ## Special Thanks
@@ -33,6 +35,8 @@ Here are ressources that got me started on that config and inspired me to create
       5. Proper external services management ? (Calendar, mails ?, Google Drive eeeeeewwww among others)
       5. About page
 * Remove unused config files
+* Make a neovim config and make THE switch
+* Configure window moving and resizing with keybinds
 * Add a system monitor
 * Add a player controller (music, browser videos) and volume mixer
 * Add an emoji picker
