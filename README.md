@@ -9,7 +9,7 @@ LanicOS <3 uses `hyprland` and `quickshell` to provide some kind of a Wayland ba
 
 I have centralized every config file here, even the ones located outside of the `.config` folder, the symlinks required to make it work are listed in the `README.md` and a helper `links.sh` file is provided to create them.
 
-The Hyprland quote at the bottom of the wallaper / desktop is kept because I find it funny. Just uncomment the line in the "MISC" section of `hypr/hyprland.lua` to remove it
+The Hyprland quote at the bottom of the wallaper / desktop is kept because I find it funny. Just uncomment in `hypr/hyprpaper.conf` to remove it
 
 > Currently a lot of stuff is being migrated to quickshell, hoping to simplify as much as possible
 
