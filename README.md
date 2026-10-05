@@ -13,6 +13,8 @@ The Hyprland quote at the bottom of the wallaper / desktop is kept because I fin
 
 > Currently a lot of stuff is being migrated to quickshell, hoping to simplify as much as possible
 
+> Please not that the project was built on Intel i7 PC and NVIDIA GPU and not tested elsewhere, some driver dependencies might need to be adjusted
+
 ## Special Thanks
 
 Here are ressources that got me started on that config and inspired me to create this repo, especially on the design part.
@@ -37,7 +39,7 @@ Here are ressources that got me started on that config and inspired me to create
 * Remove unused config files
 * Make a neovim config and make THE switch
 * Configure window moving and resizing with keybinds
-* Add a system monitor
+* Add a system monitor, with turbostat
 * Add a player controller (music, browser videos) and volume mixer
 * Add an emoji picker
 * Proper lockscreen via hyprlock or quickshell
@@ -46,6 +48,9 @@ Here are ressources that got me started on that config and inspired me to create
 * Add a wallpaper picker
 * Add calendar client when clicked on date (through thunderbird or is there an easier way ?)
 * Add system tray client (I'm not much of a systray guy, so, not happening soon)
+* Shutdown menu doesnt have the same font size as the settings paanel, unify that
+* Settings menu doesnt have the same font size as shutdown menu, unify that
+* Fix incoherent selection/text background/overline text colors to keep only `primary text on primary`
 
 # 1. Dependencies
 
@@ -60,14 +65,16 @@ Tools used to allow the full display and interactivity of the desktop environmen
 * hypridle : Idle deamon to automatically lock the session
 * hyprlock : Lockscreen/Screensaver from hypr community
 * quickshell : QT/QML utility to build custom panels and menus to build your own linux shell 
-* sddm : Display manager that launches Hyprland and provides login security, replacing the classic tty login
-* matugen : Generates a Material You palette from the wallpaper and writes it into every template (hyprland, hyprlock, kitty, GTK 3 & 4, quickshell, sddm), the actual theming engine of this whole thing
+* matugen : Generates a Material You palette from the wallpaper and writes it into every template (hyprland, hyprlock, kitty, GTK 3 & 4, quickshell), the actual theming engine of this whole thing
 * jq : JSON cli, used by the matugen hyprpaper hook to list the monitors so the wallpaper changes on every screen
 * gtk3 : GTK 3 toolkit, still used by firefox, thunderbird, gimp and the GTK file chooser portal, themed by `~/.config/gtk-3.0/`
 * gtk4 + libadwaita : GTK 4 toolkit and the GNOME style library nautilus is built on, themed by `~/.config/gtk-4.0/`
 * adw-gtk-theme : GTK 3 port of the libadwaita look, reads matugen's libadwaita color names so GTK 3 apps get the wallpaper colors too
 * nautilus : GTK-based file explorer, used in GNOME
 * xorg-xwayland : Compatibilty layer to allows x11 applications to run or Wayland 
+* libva-nvidia-driver : Libva decodes video streams, this driver allows the videos to be decode on the NVIDIA hardware instead of Intel graphics
+* qt6-virtualkeyboard : To have a virtual keyboard on the login screen, handy if you only got a mouse and monitor lol
+
 
 > GTK 3 apps need to be pointed at the theme once : `gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark`
 >
@@ -75,27 +82,10 @@ Tools used to allow the full display and interactivity of the desktop environmen
 
 > To compare between bare nautilus and themed, you can use `XDG_CONFIG_HOME=$(mktemp -d) dbus-run-session nautilus` to open a bare, unthemed nautilus window. Same trick for GTK 3 apps, e.g. `XDG_CONFIG_HOME=$(mktemp -d) nwg-look`
 
-# SDDM Themes
-
-Utilities needed to make the current SDDM themes work
-
-* qt6-svg : To display noice SVG icons especially those cool shutdown/reboot/suspend/hibernate buttons
-* qt6-virtualkeyboard : To have a virtual keyboard on the login screen, handy if you only got a mouse and monitor lol
-* qt6-multimedia-ffmpeg : To display animated backgrounds
-* qt5-declarative : Just required I guess...
-
-### TODOS
-
-* Build one on my own to make sure every dep is justified
-
 ## Terminal
 
 * kitty : My personal favorite terminal emulator, very basic and customizable, does the job
 * oh-my-zsh : Cool .zshrc config that adds cool prompt theming with auto-suggestions and git plugins, among others... 
-
-### TODOS
-
-* Why does kitty needs internet access when refreshing the theme ??? Might wanna check that out
 
 ## Utilities
 
@@ -193,7 +183,7 @@ sec   rsa4096/ABCD1234EFGH5678 YYYY-MM-DD
 uid   [ultimate] Your Name <your@email.com>
 ```
 
-You should get the `ABCD1234EFGH5678` part, that is your key's ID, use it to generate a password store.
+You should copy/save the `ABCD1234EFGH5678` part, that is your key's ID, use it to generate a password store.
 
 ```
 pass init ABCD1234EFGH5678
