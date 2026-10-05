@@ -27,7 +27,7 @@ post_hook = '~/.config/matugen/scripts/reload-kitty.sh'
 [templates.gtk4]
 input_path = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/gtk-4.0/colors.css'
-post_hook = "nautilus -q"
+post_hook = "pkill -x nautilus || true"
 
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk3-colors.css'
@@ -36,16 +36,6 @@ output_path = '~/.config/gtk-3.0/colors.css'
 [templates.quickshell]
 input_path = '~/.config/matugen/templates/quickshell-colors.qml'
 output_path = '~/.config/quickshell/lanicOS/colors/Colors.qml'
-
-[templates.swaync]
-input_path = '~/.config/matugen/templates/swaync-colors.css'
-output_path = '~/.config/swaync/colors.css'
-post_hook = 'swaync-client -rs'
-
-[templates.sddm]
-input_path = '~/.config/matugen/templates/sddm-colors.conf'
-output_path = '~/.cache/matugen/sddm-colors.conf'
-# post_hook = '~/.config/matugen/scripts/sync-sddm.sh'
 
 [templates.palette]
 input_path = '~/.config/matugen/templates/palette.css'

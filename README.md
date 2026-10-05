@@ -26,7 +26,6 @@ Here are ressources that got me started on that config and inspired me to create
 
 ## Project TODOS
 
-* Proper GTK theming so unthemed windows stop popping right in me face TwT
 * Add notification client
 * Add a settings "application"
       0. Audio output picker (Between HDMI, Bluetooth and shit...)
@@ -36,21 +35,21 @@ Here are ressources that got me started on that config and inspired me to create
       4. qs.config preferences
       5. Proper external services management ? (Calendar, mails ?, Google Drive eeeeeewwww among others)
       5. About page
+      6. wallpaper picker
 * Remove unused config files
-* Make a neovim config and make THE switch
 * Configure window moving and resizing with keybinds
 * Add a system monitor, with turbostat
+* Make a quickshell lockscreen and remove hyprlock
 * Add a player controller (music, browser videos) and volume mixer
 * Add an emoji picker
-* Proper lockscreen via hyprlock or quickshell
 * Image viewer when opening images from nautilus
-* Loading logo/throbber/animation after unlock
-* Add a wallpaper picker
 * Add calendar client when clicked on date (through thunderbird or is there an easier way ?)
-* Add system tray client (I'm not much of a systray guy, so, not happening soon)
-* Shutdown menu doesnt have the same font size as the settings paanel, unify that
+* Make a neovim config and make THE switch
+* Loading logo/throbber/animation after unlock
+* Shutdown menu doesnt have the same font size as the settings panel, unify that
 * Settings menu doesnt have the same font size as shutdown menu, unify that
-* Fix incoherent selection/text background/overline text colors to keep only `primary text on primary`
+* Proper GTK theming so unthemed windows stop popping right in me face TwT : Partly done, experience will tell
+* Add system tray client (I'm not much of a systray guy, so, not happening soon)
 
 # 1. Dependencies
 
