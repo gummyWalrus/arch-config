@@ -50,8 +50,8 @@ hl.on("hyprland.start", function()
     -- hypridle, hyprpaper and gpg-agent run as systemd user units, see "Required services" in ~/.config/README.md
 
     -- To enable clipboard history for text and image
-    hl.exec_cmd("uwsm app -- wl-paste --type text  --watch cliphist -max-items 500 -max-item-size 20MiB store")
-    hl.exec_cmd("uwsm app -- wl-paste --type image --watch cliphist -max-items 500 -max-item-size 20MiB store")
+    hl.exec_cmd("uwsm app -- wl-paste --type text  --watch cliphist -max-items 500 store")
+    hl.exec_cmd("uwsm app -- wl-paste --type image --watch cliphist -max-items 500 store")
 
     hl.exec_cmd("uwsm app -- quickshell -c lanicOS")
 
