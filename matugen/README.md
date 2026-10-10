@@ -14,7 +14,6 @@ matugen/
     gtk-colors.css            → ~/.config/gtk-4.0/colors.css (libadwaita named colors)
     gtk3-colors.css           → ~/.config/gtk-3.0/colors.css (same + GTK 3 legacy names, for adw-gtk3)
     quickshell-colors.qml     → ~/.config/quickshell/lanicOS/colors/Colors.qml
-    swaync-colors.css         → ~/.config/swaync/colors.css
     sddm-colors.conf          → ~/.cache/matugen/sddm-colors.conf (staging, see below)
     palette.css               → ~/.config/matugen/current_palette.css
   scripts/

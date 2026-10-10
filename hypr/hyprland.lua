@@ -373,3 +373,4 @@ hl.window_rule({
 --- keybinds    ---
 require('custom.keybinds')
 require('custom.smartGaps')
+require('custom.monitors')
