@@ -1,3 +1,6 @@
 [submodule "icons"]
 	path = icons
 	url = git@github.com:gummyWalrus/lanicOS-icons.git
+[submodule "quickshell/lanicOS"]
+	path = quickshell/lanicOS
+	url = git@github.com:gummyWalrus/lanicOS-quickshell.git
